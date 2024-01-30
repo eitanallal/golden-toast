@@ -1,1 +1,56 @@
-/* Your styles goes here. */
+#root {
+  width: 100vw;
+  height: 100vh;
+}
+
+.background {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+    to bottom,
+    blue 16%,
+    rgb(169, 38, 186) 48%,
+    rgb(255, 0, 111) 80%,
+    rgb(255, 82, 19) 98%
+  );
+}
+
+.header {
+  margin-left: 1vi;
+  margin-right: 1vi;
+  margin-bottom: 1vi;
+  height: 7vi;
+  display: flex;
+  color: whitesmoke;
+  justify-content: space-between;
+  font-size: 22px;
+}
+
+.mainContent {
+  display: flex;
+  justify-content: space-evenly;
+}
+.leaderboard {
+  display: flex;
+  width: 30vw;
+  border: 2px solid white;
+  background-color: transparent;
+  justify-content: center;
+}
+
+.drinks {
+  display: flex;
+  width: 35vw;
+  border: 2px solid red;
+  justify-content: center;
+}
+
+.criminals {
+  display: flex;
+  width: 25vw;
+  border: 2px solid blue;
+  justify-content: center;
+}
+.categorytitle {
+  font-size: 26px;
+}
