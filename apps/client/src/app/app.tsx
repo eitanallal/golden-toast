@@ -13,12 +13,15 @@ export function App() {
         <div className={styles.leaderboard}>
           <div className={styles.categorytitle}>LEADERBOARD</div>
         </div>
-        <div className={styles.drinks}>
-          <div className={styles.categorytitle}>DRINKS</div>
+        <div className={styles.toasts}>
+          <div className={styles.categorytitle}>TOAST</div>
         </div>
         <div className={styles.criminals}>
           <div className={styles.categorytitle}>CRIMINALS</div>
         </div>
+      </div>
+      <div className={styles.bottomMenu}>
+        <div className={styles.addToastButton}>Add a toast</div>
       </div>
     </div>
   );
