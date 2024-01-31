@@ -13,13 +13,11 @@
 }
 
 .header {
-  padding: 0.5rem;
-  padding-top: 0;
-  /* height: 7vi; */
+  padding: 0 0.5rem 0.5rem 0.5rem;
   display: flex;
   color: whitesmoke;
   justify-content: space-between;
-  font-size: 22px;
+  font-size: 1.5rem;
   background-color: transparent;
 }
 
@@ -52,17 +50,16 @@
   justify-content: center;
 }
 .categorytitle {
-  font-size: 26px;
+  font-size: 1.75rem;
   width: fit-content;
   height: fit-content;
   background-color: transparent;
 }
 
 .bottomMenu {
-  padding: 0.5rem;
-  padding-bottom: 0;
+  padding: 0.5rem 0.5rem 0 0.5rem;
   display: flex;
-  font-size: 22px;
+  font-size: 1.5rem;
   right: 100%;
   justify-content: flex-end;
 }
