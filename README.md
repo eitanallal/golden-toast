@@ -18,20 +18,23 @@
 - admin actions:
 
   - set or unset user as criminal/persona non grata
-  - add, edit, remove drinks for all users
+  - add, edit, remove toasts for all users
   - set user as admin
-  - set a drink as criminal: drink that was supposed to happen and didn't
+  - set a toast as criminal: toast that was supposed to happen and didn't
+  - as a toast happens, hasHappened is "null". When the date of the toast has happened, a window pops up at the admin page: he has to classify all the toasts that hasn't been done yet:
+    - true : the toast happened
+    - false : the toast hasn't happened -> the user becomes automatically a criminal.
 
 - reset the leaderboard at each period, and change the record
-- automatically set a user as a criminal when one of his drinks hasn't taken place
+- automatically set a user as a criminal when one of his toasts hasn't taken place
 
 ## Leaderboard
 
 - Two periods a year:
   - 01/01 to 30/06
   - 01/07 to 31/12
-- user score = total number of drinks that were not illegal
-- Show total number of drinks done so far and all time record. update possible only on 30/06 and 31/12
+- user score = total number of toasts that were not illegal
+- Show total number of toasts done so far and all time record. update possible only on 30/06 and 31/12
 
 ## Security
 

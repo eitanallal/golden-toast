@@ -2,10 +2,10 @@
 
 Table Users
 
-| id       | username | name   | surname | password | isAdmin |
-| -------- | -------- | ------ | ------- | -------- | ------- |
-| uuid     | string   | string | string  | string   | boolean |
-| prim key |          |        |         |          |         |
+| id       | username | firstName | lastName | password | isAdmin |
+| -------- | -------- | --------- | -------- | -------- | ------- |
+| uuid     | string   | string    | string   | string   | boolean |
+| prim key |          |           |          |          |         |
 
 Table Criminal
 
@@ -51,4 +51,4 @@ Table Toasts
 - POST: SetUserPersonNonGrata(uuid userId) => boolean
 - POST: UnsetUserPersonNonGrata(uuid userId) => boolean
 - GET: GetUserCriminalStatus(uuid userId) => boolean
-- GET: GetUserPersonNonGrataStatus(uuid userId) => boolean
+- GET: GetUserPersonNonGratacd status(uuid userId) => boolean
