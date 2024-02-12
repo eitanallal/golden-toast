@@ -17,4 +17,38 @@ export class UsersService {
   async create(user: UserDto): Promise<User> {
     return this.userModel.create(user);
   }
+
+  async update(
+    id: number,
+    userUpdated: UserDto
+  ): Promise<[affectedCount: number]> {
+    const numberAffected = await this.userModel.update(userUpdated, {
+      where: { id: id },
+    });
+    return numberAffected;
+  }
+
+  async getTotalNumberOfUsers(): Promise<number> {
+    const wholeTable = this.userModel.findAll({ where: { isAdmin: true } });
+    const numberOfAdmin = (await wholeTable).length;
+    return numberOfAdmin;
+  }
+
+  async getUsername(id: string): Promise<User> {
+    const user = await this.userModel.findOne({ where: { id: id } });
+    return user;
+  }
+  async checkUsernamePasswordMatch(
+    username: string,
+    password: string
+  ): Promise<boolean> {
+    const passwordMatches = await this.userModel.findAll({
+      where: { username: username, password: password },
+    });
+    if (passwordMatches.length > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

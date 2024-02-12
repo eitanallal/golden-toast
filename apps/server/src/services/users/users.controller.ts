@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Put, Post, Param } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { User } from './user.model';
 import { UserDto } from './dto/user.dto';
@@ -7,7 +7,7 @@ import { UserDto } from './dto/user.dto';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @Get('/getUsers/')
+  @Get()
   async findall(): Promise<UserDto[]> {
     return this.usersService.findAll();
   }
@@ -15,5 +15,31 @@ export class UsersController {
   @Post()
   async create(@Body() user: UserDto): Promise<User> {
     return this.usersService.create(user);
+  }
+
+  @Put(':id')
+  async update(
+    @Param('id') id: number,
+    @Body() userUpdated: UserDto
+  ): Promise<[affectedCount: number]> {
+    return this.usersService.update(id, userUpdated);
+  }
+
+  @Get('totalnumberofadmins')
+  async getTotalNumberOfUsers(): Promise<number> {
+    return this.usersService.getTotalNumberOfUsers();
+  }
+
+  @Get('Username/:id') //localhost:3000/api/users/Username/0a43f9d4-119b-4ab3-99eb-c3698b5bca77
+  async getUsername(@Param('id') id: string): Promise<User> {
+    return this.usersService.getUsername(id);
+  }
+
+  @Get('Login/:username/:password')
+  async checkUsernamePasswordMatch(
+    @Param('username') username: string,
+    @Param('password') password: string
+  ): Promise<boolean> {
+    return this.usersService.checkUsernamePasswordMatch(username, password);
   }
 }
