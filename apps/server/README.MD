@@ -51,4 +51,4 @@
 - POST: SetUserPersonNonGrata(uuid userId) => boolean
 - POST: UnsetUserPersonNonGrata(uuid userId) => boolean
 - GET: GetUserCriminalStatus(uuid userId) => boolean
-- GET: GetUserPersonNonGratacd status(uuid userId) => boolean
+- GET: GetUserPersonNonGrataStatus(uuid userId) => boolean
