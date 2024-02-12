@@ -28,13 +28,13 @@ export class UsersService {
     return numberAffected;
   }
 
-  async getTotalNumberOfUsers(): Promise<number> {
+  async getTotalNumberOfAdmins(): Promise<number> {
     const wholeTable = this.userModel.findAll({ where: { isAdmin: true } });
     const numberOfAdmin = (await wholeTable).length;
     return numberOfAdmin;
   }
 
-  async getUsername(id: string): Promise<User> {
+  async getUserData(id: string): Promise<User> {
     const user = await this.userModel.findOne({ where: { id: id } });
     return user;
   }
