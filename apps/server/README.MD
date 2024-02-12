@@ -52,3 +52,7 @@
 - POST: UnsetUserPersonNonGrata(uuid userId) => boolean
 - GET: GetUserCriminalStatus(uuid userId) => boolean
 - GET: GetUserPersonNonGrataStatus(uuid userId) => boolean
+
+# Improvement ideas
+
+Add Description to toats (birthday, end of hafifa, entrance, pkheda...)

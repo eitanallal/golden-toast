@@ -24,4 +24,29 @@ export class ToastsController {
   ): Promise<[affectedCount: number]> {
     return this.toastsService.update(id, toastUpdated);
   }
+
+  @Get('past')
+  async getGlobalPassedToasts(): Promise<Toast[]> {
+    return this.toastsService.getGlobalPassedToasts();
+  }
+
+  @Get('past/:id')
+  async getUserPassedToasts(@Param('id') id: string): Promise<Toast[]> {
+    return this.toastsService.getUserPassedToasts(id);
+  }
+
+  @Get('future')
+  async getGlobalFutureToasts(): Promise<Toast[]> {
+    return this.toastsService.getGlobalFutureToasts();
+  }
+
+  @Get('future/:id')
+  async getUserFutureToasts(@Param('id') id: string): Promise<Toast[]> {
+    return this.toastsService.getUserFutureToasts(id);
+  }
+
+  @Get('currentscore')
+  async getCurrentPeriodScore(): Promise<number> {
+    return this.toastsService.getCurrentPeriodScore();
+  }
 }
