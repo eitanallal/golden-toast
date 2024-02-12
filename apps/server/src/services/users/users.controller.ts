@@ -25,8 +25,21 @@ export class UsersController {
     return this.usersService.update(id, userUpdated);
   }
 
-  @Get('totalnumberofusers')
+  @Get('totalnumberofadmins')
   async getTotalNumberOfUsers(): Promise<number> {
     return this.usersService.getTotalNumberOfUsers();
+  }
+
+  @Get('Username/:id') //localhost:3000/api/users/Username/0a43f9d4-119b-4ab3-99eb-c3698b5bca77
+  async getUsername(@Param('id') id: string): Promise<User> {
+    return this.usersService.getUsername(id);
+  }
+
+  @Get('Login/:username/:password')
+  async checkUsernamePasswordMatch(
+    @Param('username') username: string,
+    @Param('password') password: string
+  ): Promise<boolean> {
+    return this.usersService.checkUsernamePasswordMatch(username, password);
   }
 }

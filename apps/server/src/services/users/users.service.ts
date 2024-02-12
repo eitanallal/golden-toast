@@ -34,5 +34,21 @@ export class UsersService {
     return numberOfAdmin;
   }
 
-  // async getfirstNameFromId(id:)
+  async getUsername(id: string): Promise<User> {
+    const user = await this.userModel.findOne({ where: { id: id } });
+    return user;
+  }
+  async checkUsernamePasswordMatch(
+    username: string,
+    password: string
+  ): Promise<boolean> {
+    const passwordMatches = await this.userModel.findAll({
+      where: { username: username, password: password },
+    });
+    if (passwordMatches.length > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

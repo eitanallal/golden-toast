@@ -1,20 +1,20 @@
 # Database architecture
 
-Table Users
+## Table Users
 
 | id       | username | firstName | lastName | password | isAdmin |
 | -------- | -------- | --------- | -------- | -------- | ------- |
 | uuid     | string   | string    | string   | string   | boolean |
 | prim key |          |           |          |          |         |
 
-Table Criminal
+## Table Criminal
 
 | id       | userId      | isPersonNonGrata |
 | -------- | ----------- | ---------------- |
 | uuid     | uuid        | boolean          |
 | prim key | foreign key |                  |
 
-Table Toasts
+## Table Toasts
 
 | id       | userId      | date     | hasHappened |
 | -------- | ----------- | -------- | ----------- |
