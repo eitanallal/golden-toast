@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { Toast } from './toast.model';
+import { Toast } from './entities/toast.model';
 import { ToastDto } from './dto/toast.dto';
 import { Op } from 'sequelize';
 

@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Put, Post, Param } from '@nestjs/common';
 import { ToastsService } from './toasts.service';
-import { Toast } from './toast.model';
+import { Toast } from './entities/toast.model';
 import { ToastDto } from './dto/toast.dto';
 
 @Controller('toasts')

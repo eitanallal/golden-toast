@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { Toast } from './toast.model';
+import { Toast } from './entities/toast.model';
 import { ToastsController } from './toasts.controller';
 import { ToastsService } from './toasts.service';
 
