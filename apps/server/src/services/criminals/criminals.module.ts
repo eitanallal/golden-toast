@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { Criminal } from './criminal.model';
+import { Criminal } from './entities/criminal.model';
 import { CriminalsController } from './criminals.controller';
 import { CriminalsService } from './criminals.service';
 

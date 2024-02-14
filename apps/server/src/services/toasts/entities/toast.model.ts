@@ -6,10 +6,10 @@ import {
   BelongsTo,
   ForeignKey,
 } from 'sequelize-typescript';
-import { User } from '../users/user.model';
+import { User } from '../../users/entities/user.model';
 
 @Table
-export class Criminal extends Model<Partial<Criminal>> {
+export class Toast extends Model<Partial<Toast>> {
   @Column({ primaryKey: true, type: UUID, defaultValue: UUIDV4 })
   id: string;
 
@@ -17,9 +17,12 @@ export class Criminal extends Model<Partial<Criminal>> {
   @Column({ type: UUID, defaultValue: UUIDV4 })
   userId: string;
 
-  @BelongsTo(() => User)
-  user: User;
+  @Column
+  date: Date;
 
   @Column({ defaultValue: false })
-  isPersonNonGrata: boolean;
+  hasHappened: boolean;
+
+  @BelongsTo(() => User)
+  user: User;
 }

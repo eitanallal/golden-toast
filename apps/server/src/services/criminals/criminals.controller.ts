@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { CriminalsService } from './criminals.service';
-import { Criminal } from './criminal.model';
+import { Criminal } from './entities/criminal.model';
 import { CriminalDto } from './dto/criminal.dto';
 
 @Controller('criminals')
