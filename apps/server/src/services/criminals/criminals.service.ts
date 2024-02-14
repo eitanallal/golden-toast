@@ -23,10 +23,22 @@ export class CriminalsService {
     criminalUpdated: CriminalDto
   ): Promise<[affectedCount: number]> {
     const numberAffected = await this.criminalModel.update(criminalUpdated, {
-      where: { id: id },
+      where: { userId: id },
     });
     return numberAffected;
   }
 
-  // async getfirstNameFromId(id:)
+  async delete(id: string) {
+    const deleted = await this.criminalModel.destroy({
+      where: { userId: id },
+    });
+    return deleted > 0;
+  }
+
+  async getByUser(id: string) {
+    const userData = await this.criminalModel.findAll({
+      where: { userId: id },
+    });
+    return userData;
+  }
 }
