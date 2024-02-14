@@ -2,7 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { Toast } from './entities/toast.model';
 import { ToastDto } from './dto/toast.dto';
-import { Op } from 'sequelize';
+import { Op, Sequelize } from 'sequelize';
+import { User } from '../users/entities/user.model';
 
 @Injectable()
 export class ToastsService {
@@ -82,10 +83,8 @@ export class ToastsService {
   startPeriodDate(): Date {
     const startDate = new Date();
     if (startDate.getMonth() < 6) {
-      console.log('Setting january');
       startDate.setUTCMonth(0);
     } else {
-      console.log('Setting july');
       startDate.setUTCMonth(6);
     }
     startDate.setUTCDate(1);
@@ -98,18 +97,12 @@ export class ToastsService {
 
   EndPeriodDate(startDate: Date): Date {
     const endDate = new Date(startDate);
-    if (startDate.getMonth() < 6) {
-      console.log('Setting january');
-      startDate.setUTCMonth(0);
+    if (endDate.getUTCMonth() == 0) {
+      endDate.setUTCMonth(6);
     } else {
-      console.log('Setting july');
-      startDate.setUTCMonth(6);
+      endDate.setUTCFullYear(startDate.getUTCFullYear() + 1);
+      endDate.setUTCMonth(0);
     }
-    startDate.setUTCDate(1);
-    startDate.setUTCHours(0);
-    startDate.setMinutes(0);
-    startDate.setSeconds(0);
-    startDate.setMilliseconds(0);
     return startDate;
   }
 
@@ -125,5 +118,63 @@ export class ToastsService {
       },
     });
     return score;
+  }
+
+  // reduxtoolkit -> rtkquery
+
+  async getBestScoreSemester(comparatorFunction: symbol): Promise<number> {
+    const midYearMonthIndex = 6;
+    const list = await this.toastModel.findAll({
+      attributes: [[Sequelize.fn('COUNT', Sequelize.col('id')), 'Total_Count']],
+      where: {
+        hasHappened: true,
+        date: {
+          [Op.gt]: new Date(),
+        },
+        [Op.and]: [
+          Sequelize.where(
+            Sequelize.fn('DATE_PART', 'month', Sequelize.col('date')),
+            { [comparatorFunction]: midYearMonthIndex }
+          ),
+        ],
+      },
+      group: [Sequelize.fn('DATE_PART', 'year', Sequelize.col('date'))],
+      order: [['Total_Count', 'DESC']],
+    });
+    const recordSemester = list[0].dataValues['Total_Count'];
+    return recordSemester;
+  }
+
+  async getBestScore(): Promise<number> {
+    const recordSemester1 = await this.getBestScoreSemester(Op.lte);
+    const recordSemester2 = await this.getBestScoreSemester(Op.gt);
+    return Math.max(recordSemester1, recordSemester2);
+  }
+
+  async getLeaderBoard(): Promise<Toast[]> {
+    const currentDate = new Date();
+    const LeaderBoard = await this.toastModel.findAll({
+      attributes: [
+        [Sequelize.fn('COUNT', Sequelize.col('*')), 'totalcount'],
+        [Sequelize.col('user.username'), 'username'],
+      ],
+      where: {
+        hasHappened: true,
+        date: {
+          [Op.lt]: currentDate,
+          [Op.gt]: this.startPeriodDate(),
+        },
+      },
+      include: [
+        {
+          model: User,
+          attributes: [],
+          as: 'user',
+        },
+      ],
+      group: ['"user"."id"'],
+      order: [['totalcount', 'DESC']],
+    });
+    return LeaderBoard;
   }
 }

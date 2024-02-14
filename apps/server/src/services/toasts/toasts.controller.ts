@@ -49,4 +49,14 @@ export class ToastsController {
   async getCurrentPeriodScore(): Promise<number> {
     return this.toastsService.getCurrentPeriodScore();
   }
+
+  @Get('bestscore')
+  async getBestScore(): Promise<number> {
+    return this.toastsService.getBestScore();
+  }
+
+  @Get('LeaderBoard')
+  async getLeaderBoard(): Promise<Toast[]> {
+    return this.toastsService.getLeaderBoard();
+  }
 }
