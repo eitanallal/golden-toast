@@ -14,7 +14,7 @@ export class Criminal extends Model<Partial<Criminal>> {
   id: string;
 
   @ForeignKey(() => User)
-  @Column({ type: UUID, defaultValue: UUIDV4 })
+  @Column({ type: UUID, defaultValue: UUIDV4, unique: true })
   userId: string;
 
   @BelongsTo(() => User)
