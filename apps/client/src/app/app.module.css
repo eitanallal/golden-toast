@@ -33,21 +33,30 @@
   width: 30vw;
   border: 2px solid white;
   background-color: transparent;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .toasts {
   display: flex;
   width: 35vw;
   border: 2px solid red;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .criminals {
   display: flex;
   width: 25vw;
   border: 2px solid blue;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  justify-content: flex-start;
 }
 .categorytitle {
   font-size: 1.75rem;
@@ -59,7 +68,6 @@
 .bottomMenu {
   padding: 0.5rem 0.5rem 0 0.5rem;
   display: flex;
-  font-size: 1.5rem;
   right: 100%;
   justify-content: flex-end;
 }
@@ -68,4 +76,15 @@
   background-color: green;
   color: white;
   width: fit-content;
+  font-size: 1.2rem;
+}
+
+.signupLoginButton {
+  background-color: transparent;
+  color: white;
+  height: fit-content;
+  padding: 0.5rem;
+  margin-right: 0;
+  font-size: 1.2rem;
+  border: 2px solid white;
 }

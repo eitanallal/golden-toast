@@ -1,0 +1,62 @@
+.loginMenu {
+  width: 40rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  max-width: fit-content;
+}
+
+.loginTitle {
+  font-size: 3rem;
+  padding-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  width: 40rem;
+}
+
+.loginForm {
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1rem;
+}
+
+.titleAndBox {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 2rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1rem;
+}
+
+.titleAndBox {
+  display: flex;
+}
+
+.inputBox {
+  font-size: 1.5rem;
+}
+
+.validationButton {
+  width: 10rem;
+  font-size: 1.5rem;
+}
+
+.validationButtonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.signinText {
+  color: rgb(0, 162, 255);
+  font-weight: bold;
+}
+
+.signinButton {
+  background-color: transparent;
+  border: none;
+}

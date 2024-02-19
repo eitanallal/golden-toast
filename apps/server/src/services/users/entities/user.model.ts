@@ -1,5 +1,5 @@
 import { UUID, UUIDV4 } from 'sequelize';
-import { Table, Column, Model, HasMany } from 'sequelize-typescript';
+import { Table, Column, Model, HasMany, HasOne } from 'sequelize-typescript';
 import { Criminal } from '../../criminals/entities/criminal.model';
 import { Toast } from '../../toasts/entities/toast.model';
 
@@ -23,8 +23,8 @@ export class User extends Model<Partial<User>> {
   @Column({ defaultValue: true })
   isAdmin: boolean;
 
-  @HasMany(() => Criminal)
-  criminals: Criminal[];
+  @HasOne(() => Criminal)
+  criminal: Criminal;
 
   @HasMany(() => Toast)
   toasts: Toast[];
