@@ -1,20 +1,12 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import styles from './addToast.module.css';
-import { useAppDispatch } from '../../store/store';
-import { addPerson } from '../../store/features/personSlice';
-import { Dialog } from '@mui/material';
-import SignUpMenu from '../signUp/signUp';
+// import { useAppDispatch } from '../../store/store';
+// import { addPerson } from '../../store/features/personSlice';
 
 const LoginMenu = () => {
-  const [openSigninModal, setOpenLoginModal] = useState(false);
-  const handleOpenSigninModal = () => setOpenLoginModal(true);
-  const handleCloseSigninModal = () => {
-    setOpenLoginModal(false);
-  };
-
   const name = useRef<string>('');
   const password = useRef<string>('');
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
   return (
     <div className={styles.loginMenu}>
       <div className={styles.loginTitle}> Login </div>
@@ -29,7 +21,7 @@ const LoginMenu = () => {
           </div>
         </div>
         <div className={styles.validationButtonContainer}>
-          <button
+          {/* <button
             className={styles.validationButton}
             onClick={() =>
               dispatch(
@@ -38,7 +30,7 @@ const LoginMenu = () => {
             }
           >
             Add
-          </button>
+          </button> */}
         </div>
       </form>
     </div>

@@ -1,5 +1,4 @@
 .signupMenu {
-  /* height: 40rem; */
   width: 40rem;
   display: flex;
   flex-direction: column;
@@ -49,4 +48,11 @@
 .validationButtonContainer {
   display: flex;
   justify-content: center;
+}
+
+.exitButton {
+  width: fit-content;
+  aspect-ratio: 1;
+  background-color: transparent;
+  border: none;
 }
