@@ -8,7 +8,10 @@ import LoginMenu from '../components/login/login';
 export function App() {
   const [openLoginModal, setOpenLoginModal] = useState(false);
   const handleOpenLoginModal = () => setOpenLoginModal(true);
-  const handleCloseLoginModal = () => setOpenLoginModal(false);
+  const handleCloseLoginModal = () => {
+    setOpenLoginModal(false);
+    console.log('closing login modal');
+  };
 
   return (
     <div className={styles.background}>
@@ -24,11 +27,10 @@ export function App() {
         <Dialog
           open={openLoginModal}
           onClose={() => handleCloseLoginModal}
+          onClick={() => handleCloseLoginModal}
           maxWidth={false}
         >
-          <div>
-            <LoginMenu />
-          </div>
+          <LoginMenu handleCloseLoginModal={handleCloseLoginModal} />
         </Dialog>
       </div>
       <div className={styles.mainContent}>
