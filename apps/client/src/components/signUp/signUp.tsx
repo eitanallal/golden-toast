@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import styles from './signUp.module.css';
 import { useAppDispatch } from '../../store/store';
-import { signUpUser } from '../../store/features/personSlice';
+import { signUpUser } from '../../store/features/userSlice';
 import CloseIcon from '@mui/icons-material/Close';
 import { Dialog } from '@mui/material';
 

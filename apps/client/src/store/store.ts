@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { PersonSlice } from './features/personSlice';
+import { UserSlice } from './features/userSlice';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 // ...
 
 export const store = configureStore({
-  reducer: { person: PersonSlice.reducer },
+  reducer: { user: UserSlice.reducer },
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

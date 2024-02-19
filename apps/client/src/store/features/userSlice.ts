@@ -1,34 +1,34 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-export interface Person {
+export interface User {
   id: number;
   name: string;
   password: string;
 }
 
-interface PersonState {
-  persons: Person[];
+interface UserState {
+  users: User[];
 }
 
-const initialState: PersonState = {
-  persons: [],
+const initialState: UserState = {
+  users: [],
 };
 
-export const PersonSlice = createSlice({
+export const UserSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    addPerson: (
+    addUser: (
       state,
       action: PayloadAction<{ name: string; password: string }>
     ) => {
-      state.persons.push({
-        id: state.persons.length,
+      state.users.push({
+        id: state.users.length,
         name: action.payload.name,
         password: action.payload.password,
       });
       console.log(
-        `Added a person: ${action.payload.name}: ${action.payload.password} as password`
+        `Added a user: ${action.payload.name}: ${action.payload.password} as password`
       );
     },
 
@@ -54,6 +54,6 @@ export const PersonSlice = createSlice({
   },
 });
 
-export const { addPerson, signUpUser } = PersonSlice.actions;
+export const { addUser, signUpUser } = UserSlice.actions;
 
-export default PersonSlice.reducer;
+export default UserSlice.reducer;

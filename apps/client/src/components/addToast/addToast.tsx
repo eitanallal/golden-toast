@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import styles from './addToast.module.css';
 // import { useAppDispatch } from '../../store/store';
-// import { addPerson } from '../../store/features/personSlice';
+import { addUser } from '../../store/features/userSlice';
 
 const LoginMenu = () => {
   const name = useRef<string>('');
@@ -25,7 +25,7 @@ const LoginMenu = () => {
             className={styles.validationButton}
             onClick={() =>
               dispatch(
-                addPerson({ name: name.current, password: password.current })
+                addUser({ name: name.current, password: password.current })
               )
             }
           >
