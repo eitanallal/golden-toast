@@ -5,19 +5,19 @@ const GetDate: React.FC = () => {
   const [date, setDate] = useState(new Date());
 
   useEffect(() => {
-    const timer = setInterval(() => setDate(new Date()), 1000);
+    setInterval(() => setDate(new Date()), 1000);
+  });
 
-    // Clean up the interval when the component unmounts
-    return function cleanup() {
-      clearInterval(timer);
-    };
-  }, []);
-
-  // Return the date to be displayed in the component
+  const currentDate = date.toLocaleDateString('fr-FR');
+  const currentTime = date.toLocaleTimeString('fr-FR', {
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric',
+  });
   return (
     <div className={styles.dateTimeBox}>
-      <div>{date.toLocaleDateString('en-GB')}</div>
-      <div>{date.toLocaleTimeString('en-GB')}</div>
+      <div>{currentDate}</div>
+      <div>{currentTime}</div>
     </div>
   );
 };

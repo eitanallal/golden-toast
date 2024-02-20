@@ -57,23 +57,25 @@ export const LoginMenu: React.FC<LoginProps> = ({
             </div>
           </div>
           <div className={styles.validationButtonContainer}>
-            {/* <button
-            className={styles.validationButton}
-            onClick={() =>
+            <button
+              className={styles.validationButton}
+              /*onClick={() =>
               dispatch(
                 addUser({ name: name.current, password: password.current })
               )
-            }
-          >
-            Add
-          </button> */}
+            }*/
+            >
+              Add
+            </button>
           </div>
         </form>
         <button
           className={styles.signinButton}
           onClick={() => handleOpenSignUpModal()}
         >
-          <div className={styles.signinText}>I don't have an account</div>
+          <button className={styles.signUpButton}>
+            Don't have an account ? Sign up here !
+          </button>
         </button>
       </div>
     </Dialog>
