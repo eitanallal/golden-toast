@@ -51,11 +51,6 @@
   justify-content: center;
 }
 
-.signinText {
-  color: rgb(0, 162, 255);
-  font-weight: bold;
-}
-
 .signinButton {
   background-color: transparent;
   border: none;
