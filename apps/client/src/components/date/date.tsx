@@ -13,11 +13,15 @@ const GetDate: React.FC = () => {
     };
   }, []);
 
-  // Return the date to be displayed in the component
+  const currentDate = date.toLocaleDateString('en-GB');
+  const currentTime =
+    date.toLocaleTimeString('en-GB').split(':')[0] +
+    ':' +
+    date.toLocaleTimeString('en-GB').split(':')[1];
   return (
     <div className={styles.dateTimeBox}>
-      <div>{date.toLocaleDateString('en-GB')}</div>
-      <div>{date.toLocaleTimeString('en-GB')}</div>
+      <div>{currentDate}</div>
+      <div>{currentTime}</div>
     </div>
   );
 };

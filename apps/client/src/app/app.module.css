@@ -3,88 +3,54 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  /* background: gra(255, 205, 160); */
+  color: 'black';
   background: linear-gradient(
     to bottom,
-    blue 16%,
-    rgb(169, 38, 186) 48%,
-    rgb(255, 0, 111) 80%,
-    rgb(255, 82, 19) 98%
+    rgb(255, 225, 93),
+    rgb(244, 157, 26),
+    rgb(220, 53, 53)
   );
+  align-items: center;
+  overflow-x: hidden;
+  overflow-x: hidden;
 }
 
+.appTitle {
+  font-size: 2.5rem;
+}
 .header {
-  padding: 0 0.5rem 0.5rem 0.5rem;
+  padding: 0.5rem;
   display: flex;
-  color: whitesmoke;
   justify-content: space-between;
-  font-size: 1.5rem;
-  background-color: transparent;
+  font-size: 1.25rem;
+  background-color: rgb(158, 14, 59);
+  color: white;
+  align-items: center;
+  width: 100%;
 }
 
 .mainContent {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   height: 100%;
-  color: white;
+  width: 90%;
   padding: 0.5rem;
-}
-.leaderboard {
-  display: flex;
-  width: 30vw;
-  border: 2px solid white;
-  background-color: transparent;
-  align-items: center;
-  flex-direction: column;
-  display: flex;
-  justify-content: flex-start;
-}
-
-.toasts {
-  display: flex;
-  width: 35vw;
-  border: 2px solid red;
-  align-items: center;
-  flex-direction: column;
-  display: flex;
-  justify-content: flex-start;
-}
-
-.criminals {
-  display: flex;
-  width: 25vw;
-  border: 2px solid blue;
-  align-items: center;
-  flex-direction: column;
-  display: flex;
-  justify-content: flex-start;
-}
-.categorytitle {
-  font-size: 1.75rem;
-  width: fit-content;
-  height: fit-content;
-  background-color: transparent;
 }
 
 .bottomMenu {
-  padding: 0.5rem 0.5rem 0 0.5rem;
+  padding: 0.5rem;
   display: flex;
   right: 100%;
   justify-content: flex-end;
 }
 
-.addToastButton {
-  background-color: green;
-  color: white;
-  width: fit-content;
-  font-size: 1.2rem;
-}
-
 .signupLoginButton {
   background-color: transparent;
-  color: white;
   height: fit-content;
   padding: 0.5rem;
-  margin-right: 0;
-  font-size: 1.2rem;
+  margin-right: 5%;
   border: 2px solid white;
+  color: white;
+  font-size: 1.25rem;
 }

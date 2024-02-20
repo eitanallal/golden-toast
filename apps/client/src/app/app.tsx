@@ -4,6 +4,8 @@ import GetDate from '../components/date/date';
 import { useState } from 'react';
 import LoginMenu from '../components/login/login';
 import SignUpMenu from '../components/signUp/signUp';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import Card from '../components/card/card';
 
 export const App = () => {
   const [isOpenLoginModal, setIsOpenLoginModal] = useState(false);
@@ -13,7 +15,7 @@ export const App = () => {
     <div className={styles.background}>
       <div className={styles.header}>
         <GetDate />
-        <div className={styles.titleUsername}>USERNAME</div>
+        <div className={styles.appTitle}>GOLDEN TOAST</div>
         <button
           className={styles.signupLoginButton}
           onClick={() => setIsOpenLoginModal(true)}
@@ -33,26 +35,15 @@ export const App = () => {
         />
       </div>
       <div className={styles.mainContent}>
-        <div className={styles.leaderboard}>
-          <div className={styles.categorytitle}>LEADERBOARD</div>
-          <p>Please log in to see content !</p>
-        </div>
-        <div className={styles.toasts}>
-          <div className={styles.categorytitle}>TOAST</div>
-          <p>Please log in to see content !</p>
-        </div>
-        <div className={styles.criminals}>
-          <div className={styles.categorytitle}>CRIMINALS</div>
-          <p>Please log in to see content !</p>
-        </div>
+        <Card cardName="Leaderboard" width="30%"></Card>
+        <Card cardName="Toasts" width="35%"></Card>
+        <Card cardName="Criminals" width="30%"></Card>
       </div>
       <div className={styles.bottomMenu}>
-        <button
-          className={styles.addToastButton}
+        <AddCircleOutlineIcon
+          sx={{ fontSize: 40, color: 'green' }}
           onClick={() => setIsOpenLoginModal(true)}
-        >
-          Add a toast
-        </button>
+        />
       </div>
     </div>
   );

@@ -1,0 +1,19 @@
+.card {
+  display: flex;
+  width: 25vw;
+  border: 2px solid black;
+  border-radius: 2.5%;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  justify-content: flex-start;
+  background-color: rgba(255, 255, 255, 0.7);
+  margin-top: 1rem;
+}
+
+.cardTitle {
+  font-size: 1.75rem;
+  width: fit-content;
+  height: fit-content;
+  background-color: transparent;
+}
