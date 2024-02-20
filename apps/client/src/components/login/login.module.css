@@ -51,14 +51,19 @@
   justify-content: center;
 }
 
-.signinText {
-  color: rgb(0, 162, 255);
+.signUpText {
+  color: rgb(0, 0, 0);
   font-weight: bold;
+  border: 0.1px solid black;
+  width: fit-content;
+  padding: 0.2rem;
 }
 
 .signinButton {
   background-color: transparent;
   border: none;
+  display: flex;
+  justify-content: center;
 }
 
 .exitButton {

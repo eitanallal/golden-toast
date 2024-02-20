@@ -14,7 +14,7 @@
 }
 
 .signupForm {
-  font-size: 2rem;
+  font-size: 1.5rem;
   display: flex;
   padding-bottom: 1rem;
   flex-direction: column;
@@ -37,12 +37,12 @@
 }
 
 .inputBox {
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 .validationButton {
   width: 10rem;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 .validationButtonContainer {
