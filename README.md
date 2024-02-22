@@ -48,4 +48,6 @@
 - Server side written in Nestis and Sequlize used as an ORM
 - End of project: use of docker and Jenkins on MAMDAS
 
-Use class validator in the dtos
+- Use class validator in the dtos
+- cursor: pointer in buttons
+- add hovering/shaddows to buttons

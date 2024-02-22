@@ -30,7 +30,7 @@ export class UsersController {
     return this.usersService.getTotalNumberOfAdmins();
   }
 
-  @Get('username/:id') //localhost:3000/api/users/Username/0a43f9d4-119b-4ab3-99eb-c3698b5bca77
+  @Get('username/:id')
   async getUserData(@Param('id') id: string): Promise<User> {
     return this.usersService.getUserData(id);
   }

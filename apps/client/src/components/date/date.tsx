@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import styles from './date.module.css';
 
-const GetDate: React.FC = () => {
+export const GetDate: React.FC = () => {
   const [date, setDate] = useState(new Date());
 
   useEffect(() => {
@@ -12,7 +12,6 @@ const GetDate: React.FC = () => {
   const currentTime = date.toLocaleTimeString('fr-FR', {
     hour: 'numeric',
     minute: 'numeric',
-    second: 'numeric',
   });
   return (
     <div className={styles.dateTimeBox}>
@@ -21,5 +20,3 @@ const GetDate: React.FC = () => {
     </div>
   );
 };
-
-export default GetDate;

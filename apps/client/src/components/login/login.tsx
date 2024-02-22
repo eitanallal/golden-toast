@@ -1,7 +1,5 @@
 import { useRef } from 'react';
 import styles from './login.module.css';
-import { useAppDispatch } from '../../store/store';
-import { addUser } from '../../store/features/userSlice';
 import { Dialog } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 
@@ -23,7 +21,6 @@ export const LoginMenu: React.FC<LoginProps> = ({
 
   const name = useRef<string>('');
   const password = useRef<string>('');
-  // const dispatch = useAppDispatch();
   return (
     <Dialog
       open={isOpenLoginModal}

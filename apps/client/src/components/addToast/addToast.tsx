@@ -1,12 +1,9 @@
 import { useRef } from 'react';
 import styles from './addToast.module.css';
-// import { useAppDispatch } from '../../store/store';
-import { addUser } from '../../store/features/userSlice';
 
 const LoginMenu = () => {
   const name = useRef<string>('');
   const password = useRef<string>('');
-  // const dispatch = useAppDispatch();
   return (
     <div className={styles.loginMenu}>
       <div className={styles.loginTitle}> Login </div>

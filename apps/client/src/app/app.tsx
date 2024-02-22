@@ -1,15 +1,15 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import styles from './app.module.css';
-import GetDate from '../components/date/date';
 import { useState } from 'react';
-import LoginMenu from '../components/login/login';
-import SignUpMenu from '../components/signUp/signUp';
+import { useGetUsersQuery } from '../store/services/user.api';
+import { LoginMenu, SignUpMenu, Card, GetDate } from '../components';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import Card from '../components/card/card';
 
 export const App = () => {
   const [isOpenLoginModal, setIsOpenLoginModal] = useState(false);
   const [isOpenSignUpModal, setIsOpenSignUpModal] = useState(false);
+
+  const { data: usersList } = useGetUsersQuery();
+  console.log(usersList);
 
   return (
     <div className={styles.background}>
