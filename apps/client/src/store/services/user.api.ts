@@ -1,13 +1,5 @@
+import { User } from '../../types/user.types';
 import { serverApi } from './server.api';
-
-export interface User {
-  id: string;
-  username: string;
-  firstName: string;
-  lastName: string;
-  password: string;
-  isAdmin: boolean;
-}
 
 const extendedApi = serverApi.injectEndpoints({
   endpoints: (builder) => ({

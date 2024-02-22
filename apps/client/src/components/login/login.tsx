@@ -19,17 +19,8 @@ export const LoginMenu: React.FC<LoginProps> = ({
     setIsOpenLoginModal(false);
   };
 
-  // const {
-  //   data: users,
-  //   isLoading,
-  //   isSuccess,
-  //   isError,
-  //   error} = useGetUsersQuery()
-  // }
-
   const name = useRef<string>('');
   const password = useRef<string>('');
-  // const dispatch = useAppDispatch();
   return (
     <Dialog
       open={isOpenLoginModal}

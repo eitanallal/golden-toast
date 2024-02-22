@@ -12,7 +12,6 @@ export const GetDate: React.FC = () => {
   const currentTime = date.toLocaleTimeString('fr-FR', {
     hour: 'numeric',
     minute: 'numeric',
-    // second: 'numeric',
   });
   return (
     <div className={styles.dateTimeBox}>

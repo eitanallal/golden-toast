@@ -120,8 +120,6 @@ export class ToastsService {
     return score;
   }
 
-  // reduxtoolkit -> rtkquery
-
   async getBestScoreSemester(comparatorFunction: symbol): Promise<number> {
     const midYearMonthIndex = 6;
     const list = await this.toastModel.findAll({
