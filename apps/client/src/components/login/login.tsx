@@ -1,7 +1,10 @@
-import { useRef } from 'react';
+import { useState } from 'react';
 import styles from './login.module.css';
 import { Dialog } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import { useLoginMutation } from '../../store/services/user.api';
+import { useAppDispatch } from '../../store/store';
+import { loginUser } from '../../store/slices/userSlice';
 
 interface LoginProps {
   setIsOpenLoginModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -19,8 +22,49 @@ export const LoginMenu: React.FC<LoginProps> = ({
     setIsOpenLoginModal(false);
   };
 
-  const name = useRef<string>('');
-  const password = useRef<string>('');
+  const dispatch = useAppDispatch();
+  const [username, setUsername] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+
+  const [login, result] = useLoginMutation();
+  const [loginError, setLoginError] = useState<string>('');
+
+  const handleLogin = () => {
+    login({
+      username: username,
+      password: password,
+    })
+      .unwrap()
+      .then((result) => {
+        dispatch(
+          loginUser({
+            id: result.id,
+            username: result.username,
+            firstName: result.firstName,
+            lastName: result.lastName,
+            password: result.password,
+            isAdmin: result.isAdmin,
+          })
+        );
+      })
+      .catch((error) => {
+        if (error) {
+          setLoginError(error.data.message);
+        }
+        if (username.length === 0) {
+          setLoginError('the username is empty !');
+        }
+        if (password.length === 0) {
+          setLoginError('the password is empty !');
+        }
+        if (password.length === 0 && username.length === 0) {
+          setLoginError('username and password are empty !');
+        }
+        if (error.status === 500) {
+          setLoginError('An unexpected error happened');
+        }
+      });
+  };
   return (
     <Dialog
       open={isOpenLoginModal}
@@ -35,13 +79,13 @@ export const LoginMenu: React.FC<LoginProps> = ({
           <CloseIcon />
         </button>
         <div className={styles.loginTitle}> Login </div>
-        <form className={styles.loginForm}>
+        <div className={styles.loginForm}>
           <div className={styles.form}>
             <div className={styles.titleAndBox}>
               <label htmlFor="">Username</label>
               <input
                 className={styles.inputBox}
-                onChange={(e) => (name.current = e.target.value)}
+                onChange={(e) => setUsername(e.target.value)}
               />
             </div>
 
@@ -49,30 +93,31 @@ export const LoginMenu: React.FC<LoginProps> = ({
               <label htmlFor="">Password</label>
               <input
                 className={styles.inputBox}
-                onChange={(e) => (password.current = e.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
           </div>
           <div className={styles.validationButtonContainer}>
             <button
               className={styles.validationButton}
-              /*onClick={() =>
-              dispatch(
-                addUser({ name: name.current, password: password.current })
-              )
-            }*/
+              onClick={() => {
+                handleLogin();
+              }}
             >
               Add
             </button>
+            <div className={styles.errorBox}>
+              <div className={styles.error}>{loginError}</div>
+            </div>
           </div>
-        </form>
+        </div>
         <button
           className={styles.signinButton}
           onClick={() => handleOpenSignUpModal()}
         >
-          <button className={styles.signUpButton}>
+          <div className={styles.signUpButton}>
             Don't have an account ? Sign up here !
-          </button>
+          </div>
         </button>
       </div>
     </Dialog>

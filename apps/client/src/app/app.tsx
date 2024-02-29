@@ -7,9 +7,7 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 export const App = () => {
   const [isOpenLoginModal, setIsOpenLoginModal] = useState(false);
   const [isOpenSignUpModal, setIsOpenSignUpModal] = useState(false);
-
   const { data: usersList } = useGetUsersQuery();
-  console.log(usersList);
 
   return (
     <div className={styles.background}>
