@@ -6,7 +6,35 @@ const extendedApi = serverApi.injectEndpoints({
     getUsers: builder.query<User[], void>({
       query: () => 'users/',
     }),
+
+    login: builder.mutation<User, { username: string; password: string }>({
+      query: (body) => ({
+        url: `/users/login/`,
+        method: 'POST',
+        body,
+        formData: true,
+      }),
+    }),
+
+    signUp: builder.mutation<
+      User,
+      {
+        username: string;
+        firstName: string;
+        lastName: string;
+        password: string;
+        isAdmin: boolean;
+      }
+    >({
+      query: (body) => ({
+        url: `/users/`,
+        method: 'POST',
+        body,
+        formData: true,
+      }),
+    }),
   }),
 });
 
-export const { useGetUsersQuery } = extendedApi;
+export const { useGetUsersQuery, useLoginMutation, useSignUpMutation } =
+  extendedApi;

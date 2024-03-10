@@ -35,11 +35,13 @@ export class UsersController {
     return this.usersService.getUserData(id);
   }
 
-  @Get('login/:username/:password')
+  @Post('login/')
   async checkUsernamePasswordMatch(
-    @Param('username') username: string,
-    @Param('password') password: string
-  ): Promise<boolean> {
-    return this.usersService.checkUsernamePasswordMatch(username, password);
+    @Body() credentials: { username: string; password: string }
+  ): Promise<User> {
+    return this.usersService.checkUsernamePasswordMatch(
+      credentials.username,
+      credentials.password
+    );
   }
 }

@@ -48,6 +48,8 @@
 .validationButtonContainer {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .exitButton {
@@ -55,4 +57,13 @@
   aspect-ratio: 1;
   background-color: transparent;
   border: none;
+}
+
+.errorBox {
+  font-size: 1rem;
+  color: red;
+}
+
+.error {
+  color: red;
 }
