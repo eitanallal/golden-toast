@@ -2,9 +2,7 @@ import { useState } from 'react';
 import styles from './login.module.css';
 import { Dialog } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import { useLoginMutation } from '../../store/services/user.api';
-import { useAppDispatch } from '../../store/store';
-import { loginUser } from '../../store/slices/userSlice';
+import { useLoginMutation, useAppDispatch, loginUser } from '../../store';
 
 interface LoginProps {
   setIsOpenLoginModal: React.Dispatch<React.SetStateAction<boolean>>;

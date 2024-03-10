@@ -1,6 +1,6 @@
 import styles from './app.module.css';
 import { useState } from 'react';
-import { useGetUsersQuery } from '../store/services/user.api';
+import { useGetUsersQuery } from '../store/';
 import { LoginMenu, SignUpMenu, Card, GetDate } from '../components';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 

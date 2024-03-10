@@ -1,11 +1,8 @@
 import { useState } from 'react';
 import styles from './signUp.module.css';
-import { useAppDispatch } from '../../store/store';
-import { signUpUser } from '../../store/slices/userSlice';
+import { useAppDispatch, signUpUser, useSignUpMutation } from '../../store';
 import CloseIcon from '@mui/icons-material/Close';
 import { Dialog } from '@mui/material';
-import { useSignUpMutation } from '../../store/services/user.api';
-
 interface SignUpProps {
   setIsOpenSignUpModal: React.Dispatch<React.SetStateAction<boolean>>;
   isOpenSignUpModal: boolean;

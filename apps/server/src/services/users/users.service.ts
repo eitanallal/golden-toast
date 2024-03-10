@@ -47,7 +47,7 @@ export class UsersService {
     const passwordMatches = await this.userModel.findOne({
       where: { username: username, password: password },
     });
-    if (passwordMatches === null) {
+    if (!passwordMatches) {
       throw new InvalidUsernamePasswordException();
     }
     return passwordMatches;
