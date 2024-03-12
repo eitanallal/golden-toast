@@ -22,25 +22,26 @@
 }
 
 .appTitle {
-  font-size: 2.5rem;
+  font-size: 2.25rem;
 }
 .header {
-  padding: 0.5rem;
+  padding: 0rem;
   display: flex;
   justify-content: space-between;
-  font-size: 1.25rem;
+  font-size: 1rem;
   background-color: var(--header);
   color: white;
   align-items: center;
   width: 100%;
+  max-height: 19%;
 }
 
 .mainContent {
   display: flex;
   justify-content: space-between;
-  height: 100%;
-  width: 90%;
-  padding: 0.5rem;
+  height: inherit;
+  width: 95%;
+  padding: 0.5rem 0 0.5rem 0.5rem;
 }
 
 .bottomMenu {
@@ -57,7 +58,9 @@
   margin-right: 5%;
   border: 2px solid white;
   color: white;
-  font-size: 1.25rem;
+  font-size: 1rem;
+  min-width: 5rem;
+  width: min-content;
 }
 
 .addToastIcon {

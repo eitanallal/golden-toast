@@ -1,17 +1,11 @@
+import React from 'react';
 import styles from './card.module.css';
+type CardProps = {
+  children: React.ReactNode;
+};
 
-interface CardProps {
-  cardName: string;
-  width: string;
-}
-
-export const Card: React.FC<CardProps> = ({ cardName, width }) => {
-  return (
-    <div className={styles.card} style={{ width: width }}>
-      <div className={styles.cardTitle}>{cardName}</div>
-      <p>Please log in to see content !</p>
-    </div>
-  );
+export const Card = (props: CardProps) => {
+  return <div className={styles.card}>{props.children}</div>;
 };
 
 export default Card;
