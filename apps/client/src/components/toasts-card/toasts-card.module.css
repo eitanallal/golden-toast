@@ -1,14 +1,14 @@
 .cardTitle {
   font-size: 1.75rem;
-  width: fit-content;
-  height: fit-content;
+  size: fit-content;
   background-color: transparent;
+  padding-bottom: 1rem;
 }
 
 .mainSection {
   width: 90%;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   flex-direction: column;
   height: 45%;
   background-color: rgba(0, 0, 0, 0.12);

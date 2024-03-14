@@ -40,9 +40,9 @@ export const App = () => {
         />
       </div>
       <div className={styles.mainContent}>
-        <LeaderboardCard></LeaderboardCard>
-        <ToastsCard></ToastsCard>
-        <CriminalsCard></CriminalsCard>
+        <LeaderboardCard />
+        <ToastsCard />
+        <CriminalsCard />
         <AddCircleOutlineIcon
           sx={{ fontSize: 40, color: 'green' }}
           onClick={() => setIsOpenLoginModal(true)}
