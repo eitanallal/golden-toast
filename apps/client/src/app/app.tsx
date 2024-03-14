@@ -1,7 +1,14 @@
 import styles from './app.module.css';
 import { useState } from 'react';
 import { useGetUsersQuery } from '../store/';
-import { LoginMenu, SignUpMenu, Card, GetDate } from '../components';
+import {
+  LoginMenu,
+  SignUpMenu,
+  LeaderboardCard,
+  GetDate,
+  CriminalsCard,
+  ToastsCard,
+} from '../components';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 export const App = () => {
@@ -18,7 +25,7 @@ export const App = () => {
           className={styles.signupLoginButton}
           onClick={() => setIsOpenLoginModal(true)}
         >
-          Sign up / Login
+          Sign Up Login
         </button>
 
         <LoginMenu
@@ -33,11 +40,9 @@ export const App = () => {
         />
       </div>
       <div className={styles.mainContent}>
-        <Card cardName="Leaderboard" width="30%"></Card>
-        <Card cardName="Toasts" width="35%"></Card>
-        <Card cardName="Criminals" width="30%"></Card>
-      </div>
-      <div className={styles.bottomMenu}>
+        <LeaderboardCard />
+        <ToastsCard />
+        <CriminalsCard />
         <AddCircleOutlineIcon
           sx={{ fontSize: 40, color: 'green' }}
           onClick={() => setIsOpenLoginModal(true)}
