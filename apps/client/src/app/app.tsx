@@ -20,12 +20,12 @@ export const App = () => {
     <div className={styles.background}>
       <div className={styles.header}>
         <GetDate />
-        <div className={styles.appTitle}>GOLDEN TOAST</div>
+        <div className={styles.appTitle}>השתיית הזהב</div>
         <button
           className={styles.signupLoginButton}
           onClick={() => setIsOpenLoginModal(true)}
         >
-          Sign Up Login
+          הרשם התחבר
         </button>
 
         <LoginMenu
@@ -44,7 +44,7 @@ export const App = () => {
         <ToastsCard />
         <CriminalsCard />
         <AddCircleOutlineIcon
-          sx={{ fontSize: 40, color: 'green' }}
+          sx={{ fontSize: 30, color: 'green' }}
           onClick={() => setIsOpenLoginModal(true)}
         />
       </div>

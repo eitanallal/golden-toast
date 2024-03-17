@@ -2,7 +2,7 @@
   font-size: 1.75rem;
   size: fit-content;
   background-color: transparent;
-  /* padding-bottom: 1rem; */
+  text-align: center;
 }
 .mainSectionContainer {
   display: flex;
