@@ -32,14 +32,6 @@ export const UserResult: React.FC<UserResultProps> = ({
       <div className={styles.score}>{score}</div>
     </div>
   );
-
-  // return (
-  //   <div className={styles.users_column}>
-  //     <div className={user_style}>
-  //       <div className={styles.userbox}>{props.user}</div>
-  //     </div>
-  //   </div>
-  // );
 };
 
 export default UserResult;
