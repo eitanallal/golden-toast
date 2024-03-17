@@ -1,33 +1,42 @@
 .single_criminal {
-  border: solid 2px;
+  border: solid 2px black;
   border-radius: 5%;
   width: 80%;
   height: 3rem;
   display: flex;
   flex-direction: column;
-  background-color: orangered;
+  background-color: var(--background1);
+  color: white;
   justify-content: center;
   overflow-x: auto;
   white-space: nowrap;
+  margin: 0.2rem;
 }
 
-.person_non_grata {
-  border: solid 2px;
+.criminals_column {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+.single_personNonGrata {
+  border: solid 2px black;
   border-radius: 5%;
   width: 80%;
   height: 3rem;
   display: flex;
   flex-direction: column;
-  background-color: orangered;
+  background-color: var(--background2);
+  color: white;
   justify-content: center;
   overflow-x: auto;
   white-space: nowrap;
+  margin: 0.2rem;
 }
 
 .userbox {
   padding: 0 0.2rem 0 0.2rem;
   font-size: 1rem;
-  font-weight: bold;
   text-align: center;
 }
 

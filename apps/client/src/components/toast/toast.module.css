@@ -10,22 +10,22 @@
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
+
+  .userbox {
+    padding: 0 0.2rem 0 0.2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .datebox {
+    font-size: 0.8rem;
+    text-align: center;
+  }
 }
 
 .empty_toast {
   max-height: 0;
   border: solid 2px transparent;
   width: 6.5rem;
-}
-
-.userbox {
-  padding: 0 0.2rem 0 0.2rem;
-  font-size: 1rem;
-  font-weight: bold;
-  text-align: center;
-}
-
-.datebox {
-  font-size: 0.8rem;
-  text-align: center;
 }

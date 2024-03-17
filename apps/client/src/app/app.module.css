@@ -3,6 +3,7 @@
   --background1: rgb(244, 157, 26);
   --background2: rgb(220, 53, 53);
   --header: rgb(158, 14, 59);
+  --padding_time_box: 0.5rem;
 }
 
 .background {
@@ -18,7 +19,6 @@
     var(--background2)
   );
   align-items: center;
-  overflow-x: hidden;
 }
 
 .appTitle {
@@ -39,7 +39,7 @@
 .mainContent {
   display: flex;
   justify-content: space-between;
-  height: inherit;
+  height: calc(100vh - 4.5rem - 4px);
   width: 95%;
   padding: 0.5rem 0 0.5rem 0.5rem;
 }
@@ -54,7 +54,7 @@
 .signupLoginButton {
   background-color: transparent;
   height: fit-content;
-  padding: 0.5rem;
+  padding: var(--padding_time_box);
   margin-right: 5%;
   border: 2px solid white;
   color: white;
