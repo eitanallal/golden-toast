@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import styles from './addToast.module.css';
 import { Dialog } from '@mui/material';
-import { useAddMutation } from '../../store/services/toasts.api';
-import { useGetUsersQuery } from '../../store';
+import { useGetUsersQuery, useAddMutation } from '../../store';
 import { User } from '../../types/user.types';
 
 interface AddToastProps {
@@ -10,7 +9,7 @@ interface AddToastProps {
   isOpenAddToastModal: boolean;
 }
 
-const AddToast: React.FC<AddToastProps> = ({
+export const AddToast: React.FC<AddToastProps> = ({
   isOpenAddToastModal,
   setIsOpenAddToastModal,
 }) => {
@@ -22,7 +21,6 @@ const AddToast: React.FC<AddToastProps> = ({
   });
 
   const { data: users } = useGetUsersQuery();
-  console.log(new Date().toISOString().split('T')[0]);
   const handleAddToast = async () => {
     addToast({
       date: date,
@@ -33,16 +31,6 @@ const AddToast: React.FC<AddToastProps> = ({
       .then((result) => {
         console.log('added toast successfully');
       });
-    {
-      /*}.catch((error) => {
-        if (error.data.message) {
-          setSignUpError(error.data.message[0]);
-        }
-        if (error.status === 500) {
-          setSignUpError('Username already in use');
-        }
-      });*/
-    }
     setIsOpenAddToastModal(false);
   };
 
@@ -72,11 +60,6 @@ const AddToast: React.FC<AddToastProps> = ({
                   ))
                 )}
               </select>
-
-              {/* <input
-                className={styles.inputBox}
-                onChange={(e) => setUser(e.target.value)}
-              /> */}
 
               <label htmlFor="">Date</label>
               <input

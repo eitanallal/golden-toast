@@ -3,15 +3,13 @@ import {
   useGetCurrentScoreQuery,
   useGetLeaderBoardQuery,
 } from '../../store/services/toasts.api';
-import Card from '../card/card';
-import UserResult from '../user-result/user-result';
+import { Card, UserResult } from '../';
 import styles from './leaderboard-card.module.css';
 
 export const LeaderboardCard: React.FC = () => {
   const { data: bestScore } = useGetBestScoreQuery();
   const { data: currentScore } = useGetCurrentScoreQuery();
   const { data: leaderboardList } = useGetLeaderBoardQuery();
-  console.log(currentScore);
   return (
     <Card>
       <div className={styles.cardContent}>

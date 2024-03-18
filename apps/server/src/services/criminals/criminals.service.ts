@@ -12,14 +12,7 @@ export class CriminalsService {
   ) {}
 
   async findAll(): Promise<CriminalDto[]> {
-    return await this.criminalModel.findAll({
-      include: [
-        {
-          model: User,
-          // on: { 'criminal.userId': 'User.id' },
-        },
-      ],
-    });
+    return await this.criminalModel.findAll({});
   }
 
   async create(criminal: CriminalDto): Promise<Criminal> {

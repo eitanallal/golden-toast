@@ -125,7 +125,6 @@ export class ToastsService {
   }
 
   async getBestScoreSemester(comparatorFunction: symbol): Promise<number> {
-    console.log('HERE !!!!');
     const midYearMonthIndex = 6;
     const list = await this.toastModel.findAll({
       attributes: [[Sequelize.fn('COUNT', Sequelize.col('id')), 'Total_Count']],
@@ -150,9 +149,7 @@ export class ToastsService {
 
   async getBestScore(): Promise<number> {
     const recordSemester1 = await this.getBestScoreSemester(Op.lte);
-    console.log('Record Semester1:', recordSemester1);
     const recordSemester2 = await this.getBestScoreSemester(Op.gt);
-    console.log('Record Semester2:', recordSemester2);
     return Math.max(recordSemester1, recordSemester2);
   }
 

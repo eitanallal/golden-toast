@@ -1,8 +1,7 @@
 import { useGetCriminalsQuery } from '../../store/services/criminals.api';
 import { CriminalType } from '../../types/criminal.types';
-import Card from '../card/card';
-import Criminal from '../criminal/criminal';
 import styles from './criminals-card.module.css';
+import { Card, Criminal } from '../';
 
 export const CriminalsCard: React.FC = () => {
   const { data: criminals } = useGetCriminalsQuery();

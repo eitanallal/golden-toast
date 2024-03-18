@@ -1,25 +1,23 @@
 import styles from './app.module.css';
 import { useState } from 'react';
-import { useGetUsersQuery } from '../store/';
 import {
+  AddToast,
   LoginMenu,
   SignUpMenu,
   LeaderboardCard,
   GetDate,
   CriminalsCard,
   ToastsCard,
+  SettingsMenu,
 } from '../components';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import SettingsIcon from '@mui/icons-material/Settings';
-import AddToast from '../components/addToast/addToast';
-import SettingsMenu from '../components/settingsMenu/settingsMenu';
 
 export const App = () => {
   const [isOpenLoginModal, setIsOpenLoginModal] = useState(false);
   const [isOpenSignUpModal, setIsOpenSignUpModal] = useState(false);
   const [isOpenAddToastModal, setIsOpenAddToastModal] = useState(false);
   const [isOpenSettingsModal, setIsOpenSettingsModal] = useState(false);
-  // const { data: usersList } = useGetUsersQuery();
 
   return (
     <div className={styles.background}>
