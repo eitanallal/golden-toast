@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { CriminalDto } from './dto/criminal.dto';
 import { Criminal } from './entities/criminal.model';
+import { User } from '../users/entities/user.model';
 
 @Injectable()
 export class CriminalsService {
@@ -11,7 +12,14 @@ export class CriminalsService {
   ) {}
 
   async findAll(): Promise<CriminalDto[]> {
-    return await this.criminalModel.findAll();
+    return await this.criminalModel.findAll({
+      include: [
+        {
+          model: User,
+          // on: { 'criminal.userId': 'User.id' },
+        },
+      ],
+    });
   }
 
   async create(criminal: CriminalDto): Promise<Criminal> {

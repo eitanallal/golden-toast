@@ -10,11 +10,16 @@ import {
   ToastsCard,
 } from '../components';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import SettingsIcon from '@mui/icons-material/Settings';
+import AddToast from '../components/addToast/addToast';
+import SettingsMenu from '../components/settingsMenu/settingsMenu';
 
 export const App = () => {
   const [isOpenLoginModal, setIsOpenLoginModal] = useState(false);
   const [isOpenSignUpModal, setIsOpenSignUpModal] = useState(false);
-  const { data: usersList } = useGetUsersQuery();
+  const [isOpenAddToastModal, setIsOpenAddToastModal] = useState(false);
+  const [isOpenSettingsModal, setIsOpenSettingsModal] = useState(false);
+  // const { data: usersList } = useGetUsersQuery();
 
   return (
     <div className={styles.background}>
@@ -38,14 +43,28 @@ export const App = () => {
           setIsOpenSignUpModal={setIsOpenSignUpModal}
           isOpenSignUpModal={isOpenSignUpModal}
         />
+
+        <AddToast
+          setIsOpenAddToastModal={setIsOpenAddToastModal}
+          isOpenAddToastModal={isOpenAddToastModal}
+        />
+
+        <SettingsMenu
+          setIsOpenSettingsModal={setIsOpenSettingsModal}
+          isOpenSettingsModal={isOpenSettingsModal}
+        />
       </div>
       <div className={styles.mainContent}>
+        <SettingsIcon
+          sx={{ fontSize: 30, color: 'black' }}
+          onClick={() => setIsOpenSettingsModal(true)}
+        />
         <LeaderboardCard />
         <ToastsCard />
         <CriminalsCard />
         <AddCircleOutlineIcon
           sx={{ fontSize: 30, color: 'green' }}
-          onClick={() => setIsOpenLoginModal(true)}
+          onClick={() => setIsOpenAddToastModal(true)}
         />
       </div>
     </div>

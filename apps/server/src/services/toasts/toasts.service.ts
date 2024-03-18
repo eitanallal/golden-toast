@@ -13,7 +13,7 @@ export class ToastsService {
   ) {}
 
   async findAll(): Promise<ToastDto[]> {
-    return await this.toastModel.findAll();
+    return await this.toastModel.findAll({ include: [{ model: User }] });
   }
 
   async create(toast: ToastDto): Promise<Toast> {
@@ -38,6 +38,7 @@ export class ToastsService {
           [Op.lt]: currentDate,
         },
       },
+      include: [{ model: User }],
     });
     return passedToasts;
   }
@@ -51,6 +52,7 @@ export class ToastsService {
         },
         userId: id,
       },
+      include: [{ model: User }],
     });
     return passedToasts;
   }
@@ -63,6 +65,7 @@ export class ToastsService {
           [Op.gt]: currentDate,
         },
       },
+      include: [{ model: User }],
     });
     return passedToasts;
   }
@@ -76,6 +79,7 @@ export class ToastsService {
         },
         userId: id,
       },
+      include: [{ model: User }],
     });
     return passedToasts;
   }
@@ -121,13 +125,14 @@ export class ToastsService {
   }
 
   async getBestScoreSemester(comparatorFunction: symbol): Promise<number> {
+    console.log('HERE !!!!');
     const midYearMonthIndex = 6;
     const list = await this.toastModel.findAll({
       attributes: [[Sequelize.fn('COUNT', Sequelize.col('id')), 'Total_Count']],
       where: {
         hasHappened: true,
         date: {
-          [Op.gt]: new Date(),
+          [Op.lt]: new Date(),
         },
         [Op.and]: [
           Sequelize.where(
@@ -145,7 +150,9 @@ export class ToastsService {
 
   async getBestScore(): Promise<number> {
     const recordSemester1 = await this.getBestScoreSemester(Op.lte);
+    console.log('Record Semester1:', recordSemester1);
     const recordSemester2 = await this.getBestScoreSemester(Op.gt);
+    console.log('Record Semester2:', recordSemester2);
     return Math.max(recordSemester1, recordSemester2);
   }
 
