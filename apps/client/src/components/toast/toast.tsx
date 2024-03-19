@@ -13,6 +13,7 @@ export const Toast = (props: ToastProps) => {
       <div className={styles.single_toast}>
         <div className={styles.userbox}>{props.user}</div>
         <div className={styles.datebox}>{props.date}</div>
+        <button className={styles.edit_button}> Edit </button>
       </div>
     );
   }

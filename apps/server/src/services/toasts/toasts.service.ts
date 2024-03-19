@@ -13,7 +13,7 @@ export class ToastsService {
   ) {}
 
   async findAll(): Promise<ToastDto[]> {
-    return await this.toastModel.findAll();
+    return await this.toastModel.findAll({ include: [{ model: User }] });
   }
 
   async create(toast: ToastDto): Promise<Toast> {
@@ -38,6 +38,7 @@ export class ToastsService {
           [Op.lt]: currentDate,
         },
       },
+      include: [{ model: User }],
     });
     return passedToasts;
   }
@@ -51,6 +52,7 @@ export class ToastsService {
         },
         userId: id,
       },
+      include: [{ model: User }],
     });
     return passedToasts;
   }
@@ -63,6 +65,7 @@ export class ToastsService {
           [Op.gt]: currentDate,
         },
       },
+      include: [{ model: User }],
     });
     return passedToasts;
   }
@@ -76,6 +79,7 @@ export class ToastsService {
         },
         userId: id,
       },
+      include: [{ model: User }],
     });
     return passedToasts;
   }
@@ -127,7 +131,7 @@ export class ToastsService {
       where: {
         hasHappened: true,
         date: {
-          [Op.gt]: new Date(),
+          [Op.lt]: new Date(),
         },
         [Op.and]: [
           Sequelize.where(

@@ -1,7 +1,8 @@
-import { IsBoolean, IsUUID } from 'class-validator';
+import { IsBoolean, IsOptional, IsUUID } from 'class-validator';
 
 export class CriminalDto {
   @IsUUID('4')
+  @IsOptional()
   readonly id: string;
   @IsUUID('4')
   readonly userId: string;

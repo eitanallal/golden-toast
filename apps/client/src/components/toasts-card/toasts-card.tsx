@@ -1,8 +1,14 @@
-import Card from '../card/card';
-import Toast from '../toast/toast';
+import {
+  useGetFutureToastsQuery,
+  useGetPassedToastsQuery,
+} from '../../store/services/toasts.api';
+import { Card, Toast } from '../';
 import styles from './toasts-card.module.css';
 
 export const ToastsCard = () => {
+  const { data: futureToastsList } = useGetFutureToastsQuery();
+  const { data: passedToastsList } = useGetPassedToastsQuery();
+
   return (
     <Card>
       <div className={styles.cardTitle}>שתיות</div>
@@ -10,11 +16,17 @@ export const ToastsCard = () => {
         <div className={styles.mainSection}>
           <div className={styles.periodName}> עבר </div>
           <div className={styles.subsection}>
-            <Toast user="User long enough for Tomer" date="2024-03-10" />
-            <Toast user="User 2" date="2024-03-11" />
-            <Toast user="User 3" date="2024-03-10" />
-            <Toast user="User 4" date="2024-03-11" />
-            <Toast user="User 5" date="2024-03-10" />
+            {!passedToastsList || passedToastsList.length === 0 ? (
+              <p> No user found </p>
+            ) : (
+              passedToastsList.map((item, index) => (
+                <Toast
+                  key={index}
+                  user={item.user.firstName + ' ' + item.user.lastName}
+                  date={item.date.split('T')[0]}
+                />
+              ))
+            )}
             <Toast user="" date="" />
             <Toast user="" date="" />
             <Toast user="" date="" />
@@ -24,11 +36,17 @@ export const ToastsCard = () => {
         <div className={styles.mainSection}>
           <div className={styles.periodName}> עתיד </div>
           <div className={styles.subsection}>
-            <Toast user="User 1" date="2024-03-10" />
-            <Toast user="User 2" date="2024-03-11" />
-            <Toast user="User 3" date="2024-03-10" />
-            <Toast user="User 4" date="2024-03-11" />
-            <Toast user="User 5" date="2024-03-10" />
+            {!futureToastsList || futureToastsList.length === 0 ? (
+              <p> No user found </p>
+            ) : (
+              futureToastsList.map((item, index) => (
+                <Toast
+                  key={index}
+                  user={item.user.firstName + ' ' + item.user.lastName}
+                  date={item.date.split('T')[0]}
+                />
+              ))
+            )}
             <Toast user="" date="" />
             <Toast user="" date="" />
             <Toast user="" date="" />

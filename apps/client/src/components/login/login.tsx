@@ -22,7 +22,7 @@ export const LoginMenu: React.FC<LoginProps> = ({
 
   const dispatch = useAppDispatch();
   const [username, setUsername] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
+  const [password, setPassword] = useState<string>(''); //shared cache key
 
   const [login, result] = useLoginMutation();
   const [loginError, setLoginError] = useState<string>('');
