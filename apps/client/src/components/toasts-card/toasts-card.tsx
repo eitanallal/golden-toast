@@ -16,11 +16,12 @@ export const ToastsCard = () => {
         <div className={styles.mainSection}>
           <div className={styles.periodName}> עבר </div>
           <div className={styles.subsection}>
-            {passedToastsList === undefined ? (
+            {!passedToastsList || passedToastsList.length === 0 ? (
               <p> No user found </p>
             ) : (
-              passedToastsList.map((item) => (
+              passedToastsList.map((item, index) => (
                 <Toast
+                  key={index}
                   user={item.user.firstName + ' ' + item.user.lastName}
                   date={item.date.split('T')[0]}
                 />
@@ -35,11 +36,12 @@ export const ToastsCard = () => {
         <div className={styles.mainSection}>
           <div className={styles.periodName}> עתיד </div>
           <div className={styles.subsection}>
-            {futureToastsList === undefined ? (
+            {!futureToastsList || futureToastsList.length === 0 ? (
               <p> No user found </p>
             ) : (
-              futureToastsList.map((item) => (
+              futureToastsList.map((item, index) => (
                 <Toast
+                  key={index}
                   user={item.user.firstName + ' ' + item.user.lastName}
                   date={item.date.split('T')[0]}
                 />

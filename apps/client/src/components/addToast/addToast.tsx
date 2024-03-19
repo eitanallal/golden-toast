@@ -3,6 +3,8 @@ import styles from './addToast.module.css';
 import { Dialog } from '@mui/material';
 import { useGetUsersQuery, useAddMutation } from '../../store';
 import { User } from '../../types/user.types';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 interface AddToastProps {
   setIsOpenAddToastModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -30,6 +32,9 @@ export const AddToast: React.FC<AddToastProps> = ({
       .unwrap()
       .then((result) => {
         console.log('added toast successfully');
+        toast.success(`Toast added successfully: ${result}`, {
+          className: 'styles.toastifyWindow',
+        });
       });
     setIsOpenAddToastModal(false);
   };
@@ -52,11 +57,13 @@ export const AddToast: React.FC<AddToastProps> = ({
                 id="user"
                 onChange={(e) => setUser(e.target.value)}
               >
-                {users === undefined ? (
+                {!users || users.length === 0 ? (
                   <p> No user found</p>
                 ) : (
-                  users.map((user: User) => (
-                    <option value={user.id}>{user.username}</option>
+                  users.map((user: User, index: number) => (
+                    <option key={index} value={user.id}>
+                      {user.username}
+                    </option>
                   ))
                 )}
               </select>

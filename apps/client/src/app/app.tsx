@@ -8,10 +8,11 @@ import {
   GetDate,
   CriminalsCard,
   ToastsCard,
-  SettingsMenu,
+  // SettingsMenu,
 } from '../components';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import SettingsIcon from '@mui/icons-material/Settings';
+import { ToastContainer } from 'react-toastify';
 
 export const App = () => {
   const [isOpenLoginModal, setIsOpenLoginModal] = useState(false);
@@ -21,6 +22,7 @@ export const App = () => {
 
   return (
     <div className={styles.background}>
+      <ToastContainer />
       <div className={styles.header}>
         <GetDate />
         <div className={styles.appTitle}>השתיית הזהב</div>
@@ -47,10 +49,10 @@ export const App = () => {
           isOpenAddToastModal={isOpenAddToastModal}
         />
 
-        <SettingsMenu
+        {/* <SettingsMenu
           setIsOpenSettingsModal={setIsOpenSettingsModal}
           isOpenSettingsModal={isOpenSettingsModal}
-        />
+        /> */}
       </div>
       <div className={styles.mainContent}>
         <SettingsIcon

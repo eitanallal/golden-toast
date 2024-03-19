@@ -10,11 +10,12 @@ export const CriminalsCard: React.FC = () => {
       <div className={styles.cardContent}>
         <div className={styles.cardTitle}>עבריינים</div>
         <div className={styles.criminalsContent}>
-          {criminals === undefined ? (
+          {!criminals || criminals.length === 0 ? (
             <p> No criminal found </p>
           ) : (
-            criminals.map((item: CriminalType) => (
+            criminals.map((item: CriminalType, index: number) => (
               <Criminal
+                key={index}
                 user={item.user.firstName + ' ' + item.user.lastName}
                 isPersonNonGrata={item.isPersonNonGrata}
               />

@@ -38,10 +38,10 @@ const extendedApi = serverApi.injectEndpoints({
       Toast,
       { date: string; userId: string; hasHappened: boolean }
     >({
-      query: ({ date, userId, hasHappened }) => ({
+      query: (body) => ({
         url: `/toasts/`,
         method: 'POST',
-        body: { date, userId, hasHappened },
+        body,
         formData: true,
       }),
       invalidatesTags: ['Toasts'],

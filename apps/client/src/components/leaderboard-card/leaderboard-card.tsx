@@ -15,7 +15,7 @@ export const LeaderboardCard: React.FC = () => {
       <div className={styles.cardContent}>
         <div className={styles.cardTitle}>לוח תוצאות</div>
         <div className={styles.list}>
-          {leaderboardList === undefined ? (
+          {!leaderboardList || leaderboardList.length === 0 ? (
             <p> no leaderboard found </p>
           ) : (
             leaderboardList.map((item, index) => (
@@ -23,6 +23,7 @@ export const LeaderboardCard: React.FC = () => {
                 user={item.username}
                 score={item.totalcount}
                 index={index}
+                key={index}
               />
             ))
           )}
