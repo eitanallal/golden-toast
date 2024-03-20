@@ -7,7 +7,7 @@ const extendedApi = serverApi.injectEndpoints({
       query: () => 'users/',
     }),
 
-    getUserData: builder.query<User, string>({
+    getUserData: builder.query<User, void>({
       query: (userId) => `users/username/${userId}`,
     }),
 
@@ -37,6 +37,25 @@ const extendedApi = serverApi.injectEndpoints({
         formData: true,
       }),
     }),
+
+    edit: builder.mutation<
+      boolean,
+      {
+        id: string;
+        username: string;
+        firstName: string;
+        lastName: string;
+        password: string;
+        isAdmin: boolean;
+      }
+    >({
+      query: (body) => ({
+        url: `/users/${body.id}`,
+        method: 'PUT',
+        body,
+        formData: true,
+      }),
+    }),
   }),
 });
 
@@ -45,4 +64,5 @@ export const {
   useGetUserDataQuery,
   useLoginMutation,
   useSignUpMutation,
+  useEditMutation,
 } = extendedApi;

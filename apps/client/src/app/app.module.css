@@ -67,3 +67,7 @@
   font-size: 40;
   color: 'green';
 }
+
+.helloBox {
+  padding: 0 0.5rem;
+}

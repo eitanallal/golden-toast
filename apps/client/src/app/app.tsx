@@ -8,17 +8,20 @@ import {
   GetDate,
   CriminalsCard,
   ToastsCard,
+  SettingsMenu,
   // SettingsMenu,
 } from '../components';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { ToastContainer } from 'react-toastify';
+import { useLoginMutation } from '../store';
 
 export const App = () => {
   const [isOpenLoginModal, setIsOpenLoginModal] = useState(false);
   const [isOpenSignUpModal, setIsOpenSignUpModal] = useState(false);
   const [isOpenAddToastModal, setIsOpenAddToastModal] = useState(false);
   const [isOpenSettingsModal, setIsOpenSettingsModal] = useState(false);
+  const [login, result] = useLoginMutation({ fixedCacheKey: 'login-key' });
 
   return (
     <div className={styles.background}>
@@ -26,12 +29,22 @@ export const App = () => {
       <div className={styles.header}>
         <GetDate />
         <div className={styles.appTitle}>השתיית הזהב</div>
-        <button
-          className={styles.signupLoginButton}
-          onClick={() => setIsOpenLoginModal(true)}
-        >
-          הרשם התחבר
-        </button>
+
+        {!result.data ? (
+          <button
+            className={styles.signupLoginButton}
+            onClick={() => setIsOpenLoginModal(true)}
+          >
+            הרשם התחבר
+          </button>
+        ) : (
+          <div className={styles.helloBox}>
+            <p>
+              {result.data.firstName} {result.data.lastName} היי{' '}
+            </p>
+            <p></p>
+          </div>
+        )}
 
         <LoginMenu
           setIsOpenLoginModal={setIsOpenLoginModal}
@@ -49,10 +62,10 @@ export const App = () => {
           isOpenAddToastModal={isOpenAddToastModal}
         />
 
-        {/* <SettingsMenu
+        <SettingsMenu
           setIsOpenSettingsModal={setIsOpenSettingsModal}
           isOpenSettingsModal={isOpenSettingsModal}
-        /> */}
+        />
       </div>
       <div className={styles.mainContent}>
         <SettingsIcon

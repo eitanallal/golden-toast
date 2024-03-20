@@ -24,7 +24,7 @@ export const LoginMenu: React.FC<LoginProps> = ({
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>(''); //shared cache key
 
-  const [login, result] = useLoginMutation();
+  const [login, result] = useLoginMutation({ fixedCacheKey: 'login-key' });
   const [loginError, setLoginError] = useState<string>('');
 
   const handleLogin = () => {
@@ -34,6 +34,8 @@ export const LoginMenu: React.FC<LoginProps> = ({
     })
       .unwrap()
       .then((result) => {
+        setIsOpenLoginModal(false);
+        console.log('set open modal to:');
         dispatch(
           loginUser({
             id: result.id,

@@ -3,6 +3,7 @@ import styles from './signUp.module.css';
 import { useAppDispatch, signUpUser, useSignUpMutation } from '../../store';
 import CloseIcon from '@mui/icons-material/Close';
 import { Dialog } from '@mui/material';
+import { User } from '../../types/user.types';
 interface SignUpProps {
   setIsOpenSignUpModal: React.Dispatch<React.SetStateAction<boolean>>;
   isOpenSignUpModal: boolean;
@@ -21,7 +22,7 @@ export const SignUpMenu: React.FC<SignUpProps> = ({
   const dispatch = useAppDispatch();
 
   const [signUp, result] = useSignUpMutation({
-    fixedCacheKey: 'sign-up-result',
+    // fixedCacheKey: 'sign-up-result',
   });
 
   const handleSignUp = async () => {
@@ -33,7 +34,7 @@ export const SignUpMenu: React.FC<SignUpProps> = ({
       isAdmin: isAdmin,
     })
       .unwrap()
-      .then((result) => {
+      .then((result: User) => {
         dispatch(
           signUpUser({
             id: result.id,

@@ -19,7 +19,7 @@ export const AddToast: React.FC<AddToastProps> = ({
   const [date, setDate] = useState('');
 
   const [addToast, result] = useAddMutation({
-    fixedCacheKey: 'add-toast-result',
+    // fixedCacheKey: 'add-toast-result',
   });
 
   const { data: users } = useGetUsersQuery();
