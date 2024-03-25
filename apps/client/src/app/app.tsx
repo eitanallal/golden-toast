@@ -9,7 +9,6 @@ import {
   CriminalsCard,
   ToastsCard,
   SettingsMenu,
-  // SettingsMenu,
 } from '../components';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -42,7 +41,6 @@ export const App = () => {
             <p>
               {result.data.firstName} {result.data.lastName} היי{' '}
             </p>
-            <p></p>
           </div>
         )}
 

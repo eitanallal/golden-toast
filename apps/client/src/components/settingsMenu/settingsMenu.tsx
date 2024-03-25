@@ -80,9 +80,9 @@ export const SettingsMenu: React.FC<SettingsMenuProps> = ({
 
             <TabPanel value="1">WELCOME TO MENU 1</TabPanel>
             <TabPanel value="2">
-              <div className={styles.signupMenu}>
-                <div className={styles.signupTitle}> Edit User </div>
-                <div className={styles.signupForm}>
+              <div className={styles.editMenu}>
+                <div className={styles.editTitle}> Edit User </div>
+                <div className={styles.editForm}>
                   <div className={styles.form}>
                     <div className={styles.titleAndBox}>
                       <label className={styles.labelForm} htmlFor="">
