@@ -1,0 +1,66 @@
+.settingsMenu {
+  display: flex;
+}
+
+.settingsWindow {
+  width: 40rem;
+  height: 35rem;
+}
+
+.editMenu {
+  width: 15rem;
+  padding: 1rem;
+  max-width: fit-content;
+  align-self: center;
+}
+
+.editTitle {
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.editForm {
+  font-size: 1rem;
+  display: flex;
+  padding-bottom: 1rem;
+  flex-direction: column;
+}
+
+.userAdminBox {
+  display: flex;
+  flex-direction: row;
+  flex-direction: column;
+  padding-bottom: 2rem;
+}
+
+.labelForm {
+  min-width: 6rem;
+  white-space: nowrap;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1rem;
+}
+
+.titleAndBox {
+  display: flex;
+}
+
+.inputBox {
+  font-size: 1rem;
+}
+
+.validationButton {
+  width: 10rem;
+  font-size: 1rem;
+}
+
+.validationButtonContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}

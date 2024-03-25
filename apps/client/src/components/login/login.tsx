@@ -24,7 +24,7 @@ export const LoginMenu: React.FC<LoginProps> = ({
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>(''); //shared cache key
 
-  const [login, result] = useLoginMutation();
+  const [login, result] = useLoginMutation({ fixedCacheKey: 'login-key' });
   const [loginError, setLoginError] = useState<string>('');
 
   const handleLogin = () => {
@@ -34,16 +34,23 @@ export const LoginMenu: React.FC<LoginProps> = ({
     })
       .unwrap()
       .then((result) => {
-        dispatch(
-          loginUser({
-            id: result.id,
-            username: result.username,
-            firstName: result.firstName,
-            lastName: result.lastName,
-            password: result.password,
-            isAdmin: result.isAdmin,
-          })
-        );
+        setIsOpenLoginModal(false);
+        if (
+          result.username &&
+          result.firstName &&
+          result.lastName &&
+          result.password
+        )
+          dispatch(
+            loginUser({
+              id: result.id,
+              username: result.username,
+              firstName: result.firstName,
+              lastName: result.lastName,
+              password: result.password,
+              isAdmin: result.isAdmin,
+            })
+          );
       })
       .catch((error) => {
         if (error) {

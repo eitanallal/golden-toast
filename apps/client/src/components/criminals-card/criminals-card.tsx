@@ -1,10 +1,11 @@
-import { useGetCriminalsQuery } from '../../store/services/criminals.api';
 import { CriminalType } from '../../types/criminal.types';
 import styles from './criminals-card.module.css';
 import { Card, Criminal } from '../';
+import { useLoginMutation, useGetCriminalsQuery } from '../../store';
 
 export const CriminalsCard: React.FC = () => {
   const { data: criminals } = useGetCriminalsQuery();
+
   return (
     <Card>
       <div className={styles.cardContent}>

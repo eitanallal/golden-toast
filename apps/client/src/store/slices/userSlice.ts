@@ -52,7 +52,12 @@ export const UserSlice = createSlice({
         isAdmin: boolean;
       }>
     ) => {
-      console.log('Logged In !');
+      state.id = action.payload.id;
+      state.username = action.payload.username;
+      state.firstName = action.payload.firstName;
+      state.lastName = action.payload.lastName;
+      state.password = action.payload.password;
+      state.isAdmin = action.payload.isAdmin;
     },
   },
 });
