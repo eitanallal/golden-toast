@@ -39,7 +39,7 @@ export const App = () => {
         ) : (
           <div className={styles.helloBox}>
             <p>
-              {result.data.firstName} {result.data.lastName} היי{' '}
+              {result.data.firstName} {result.data.lastName} היי
             </p>
           </div>
         )}

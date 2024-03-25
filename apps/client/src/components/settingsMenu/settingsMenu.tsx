@@ -18,14 +18,14 @@ export const SettingsMenu: React.FC<SettingsMenuProps> = ({
   isOpenSettingsModal,
   setIsOpenSettingsModal,
 }) => {
-  const [username, setUsername] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState<string>();
+  const [firstName, setFirstName] = useState<string>();
+  const [lastName, setLastName] = useState<string>();
+  const [password, setPassword] = useState<string>();
   const [userToChangePrivilege, setUserToChangePrivilege] = useState(0);
   const { data: users } = useGetUsersQuery();
 
-  const [errorMessageEditUser, setErrorMessageEditUser] = useState('');
+  const [errorMessageEditUser, setErrorMessageEditUser] = useState<string>();
   const [tabSelector, setTabSelector] = useState('1');
   const handleTabChange = (event: React.SyntheticEvent, newTab: string) => {
     setTabSelector(newTab);
@@ -156,7 +156,9 @@ export const SettingsMenu: React.FC<SettingsMenuProps> = ({
                         id="user"
                         onChange={(e) => {
                           setUserToChangePrivilege(
-                            e.target.value === '1' ? 1 : 0
+                            e.target.value === '1'
+                              ? parseInt(e.target.value)
+                              : 0
                           );
                           console.log(
                             `Selected user: ${userToChangePrivilege}`
@@ -167,7 +169,7 @@ export const SettingsMenu: React.FC<SettingsMenuProps> = ({
                           <p> No user found</p>
                         ) : (
                           users.map((user: User, index: number) => (
-                            <option key={index} value={index}>
+                            <option key={user.id} value={index}>
                               {user.username}
                             </option>
                           ))
