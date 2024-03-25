@@ -4,5 +4,5 @@ export const serverApi = createApi({
   reducerPath: 'serverApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000/api/' }),
   endpoints: () => ({}),
-  tagTypes: ['Toasts', 'User', 'Criminals'],
+  tagTypes: ['Toasts', 'Users', 'Criminals'],
 });

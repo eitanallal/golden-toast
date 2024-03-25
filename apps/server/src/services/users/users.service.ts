@@ -12,7 +12,7 @@ export class UsersService {
   ) {}
 
   async findAll(): Promise<UserDto[]> {
-    return await this.userModel.findAll();
+    return await this.userModel.findAll({ order: [['username', 'ASC']] });
   }
 
   async create(user: UserDto): Promise<User> {

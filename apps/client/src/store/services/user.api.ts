@@ -5,10 +5,12 @@ const extendedApi = serverApi.injectEndpoints({
   endpoints: (builder) => ({
     getUsers: builder.query<User[], void>({
       query: () => 'users/',
+      providesTags: ['Users'],
     }),
 
     getUserData: builder.query<User, void>({
       query: (userId) => `users/username/${userId}`,
+      providesTags: ['Users'],
     }),
 
     login: builder.mutation<User, { username: string; password: string }>({
@@ -36,17 +38,18 @@ const extendedApi = serverApi.injectEndpoints({
         body,
         formData: true,
       }),
+      invalidatesTags: ['Users'],
     }),
 
     edit: builder.mutation<
       boolean,
       {
         id: string;
-        username: string;
-        firstName: string;
-        lastName: string;
-        password: string;
-        isAdmin: boolean;
+        username?: string;
+        firstName?: string;
+        lastName?: string;
+        password?: string;
+        isAdmin?: boolean;
       }
     >({
       query: (body) => ({
@@ -55,6 +58,7 @@ const extendedApi = serverApi.injectEndpoints({
         body,
         formData: true,
       }),
+      invalidatesTags: ['Users'],
     }),
   }),
 });

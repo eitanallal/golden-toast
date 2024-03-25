@@ -35,6 +35,11 @@
   padding-bottom: 2rem;
 }
 
+.labelForm {
+  min-width: 6rem;
+  white-space: nowrap;
+}
+
 .form {
   display: flex;
   flex-direction: column;

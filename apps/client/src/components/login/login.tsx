@@ -35,17 +35,22 @@ export const LoginMenu: React.FC<LoginProps> = ({
       .unwrap()
       .then((result) => {
         setIsOpenLoginModal(false);
-        console.log('set open modal to:');
-        dispatch(
-          loginUser({
-            id: result.id,
-            username: result.username,
-            firstName: result.firstName,
-            lastName: result.lastName,
-            password: result.password,
-            isAdmin: result.isAdmin,
-          })
-        );
+        if (
+          result.username &&
+          result.firstName &&
+          result.lastName &&
+          result.password
+        )
+          dispatch(
+            loginUser({
+              id: result.id,
+              username: result.username,
+              firstName: result.firstName,
+              lastName: result.lastName,
+              password: result.password,
+              isAdmin: result.isAdmin,
+            })
+          );
       })
       .catch((error) => {
         if (error) {

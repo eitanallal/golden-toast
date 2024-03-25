@@ -4,7 +4,6 @@ import { Dialog, Switch, Tab } from '@mui/material';
 import { TabPanel, TabContext, TabList } from '@mui/lab';
 import {
   useEditMutation,
-  useGetUserDataQuery,
   useGetUsersQuery,
   useLoginMutation,
 } from '../../store';
@@ -23,10 +22,8 @@ export const SettingsMenu: React.FC<SettingsMenuProps> = ({
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [password, setPassword] = useState('');
-  const [user, setUser] = useState('');
+  const [userToChangePrivilege, setUserToChangePrivilege] = useState(0);
   const { data: users } = useGetUsersQuery();
-
-  const [getUserData, userData] = useGetUserDataQuery();
 
   const [errorMessageEditUser, setErrorMessageEditUser] = useState('');
   const [tabSelector, setTabSelector] = useState('1');
@@ -56,6 +53,15 @@ export const SettingsMenu: React.FC<SettingsMenuProps> = ({
     }
   };
 
+  const handleChangeUserPrivileges = async () => {
+    if (users) {
+      editUser({
+        id: users[userToChangePrivilege].id,
+        isAdmin: !users[userToChangePrivilege].isAdmin,
+      });
+    }
+  };
+
   return (
     <Dialog
       open={isOpenSettingsModal}
@@ -79,7 +85,9 @@ export const SettingsMenu: React.FC<SettingsMenuProps> = ({
                 <div className={styles.signupForm}>
                   <div className={styles.form}>
                     <div className={styles.titleAndBox}>
-                      <label htmlFor="">Username</label>
+                      <label className={styles.labelForm} htmlFor="">
+                        Username
+                      </label>
                       <input
                         className={styles.inputBox}
                         defaultValue={loggedInUser.data?.username}
@@ -88,7 +96,9 @@ export const SettingsMenu: React.FC<SettingsMenuProps> = ({
                     </div>
 
                     <div className={styles.titleAndBox}>
-                      <label htmlFor="">First Name</label>
+                      <label className={styles.labelForm} htmlFor="">
+                        First Name
+                      </label>
                       <input
                         className={styles.inputBox}
                         defaultValue={loggedInUser.data?.firstName}
@@ -97,7 +107,9 @@ export const SettingsMenu: React.FC<SettingsMenuProps> = ({
                     </div>
 
                     <div className={styles.titleAndBox}>
-                      <label htmlFor="">Last Name</label>
+                      <label className={styles.labelForm} htmlFor="">
+                        Last Name
+                      </label>
                       <input
                         className={styles.inputBox}
                         defaultValue={loggedInUser.data?.lastName}
@@ -106,7 +118,9 @@ export const SettingsMenu: React.FC<SettingsMenuProps> = ({
                     </div>
 
                     <div className={styles.titleAndBox}>
-                      <label htmlFor="">Password</label>
+                      <label className={styles.labelForm} htmlFor="">
+                        Password
+                      </label>
                       <input
                         className={styles.inputBox}
                         defaultValue={loggedInUser.data?.password}
@@ -132,7 +146,7 @@ export const SettingsMenu: React.FC<SettingsMenuProps> = ({
             </TabPanel>
             <TabPanel value="3">
               <div className={styles.signupMenu}>
-                <div className={styles.signupTitle}> Edit User </div>
+                <div className={styles.signupTitle}> User Privileges</div>
                 <div className={styles.signupForm}>
                   <div className={styles.form}>
                     <div className={styles.userAdminBox}>
@@ -141,21 +155,31 @@ export const SettingsMenu: React.FC<SettingsMenuProps> = ({
                         name="user"
                         id="user"
                         onChange={(e) => {
-                          setUser(e.target.value);
+                          setUserToChangePrivilege(
+                            e.target.value === '1' ? 1 : 0
+                          );
+                          console.log(
+                            `Selected user: ${userToChangePrivilege}`
+                          );
                         }}
                       >
                         {!users || users.length === 0 ? (
                           <p> No user found</p>
                         ) : (
                           users.map((user: User, index: number) => (
-                            <option key={index} value={user.id}>
+                            <option key={index} value={index}>
                               {user.username}
                             </option>
                           ))
                         )}
                       </select>
 
-                      <Switch />
+                      <Switch
+                        checked={
+                          users ? users[userToChangePrivilege].isAdmin : false
+                        }
+                        onChange={handleChangeUserPrivileges}
+                      />
                     </div>
                   </div>
                 </div>
