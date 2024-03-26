@@ -10,3 +10,4 @@ export * from './signUp/signUp';
 export * from './toast/toast';
 export * from './toasts-card/toasts-card';
 export * from './user-result/user-result';
+export * from './toastEdit/toastEdit';

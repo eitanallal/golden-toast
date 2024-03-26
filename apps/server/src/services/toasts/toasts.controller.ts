@@ -1,7 +1,16 @@
-import { Body, Controller, Get, Put, Post, Param } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Put,
+  Post,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { ToastsService } from './toasts.service';
 import { Toast } from './entities/toast.model';
 import { ToastDto } from './dto/toast.dto';
+import { ToastCreateDto, ToastEditDto } from './dto';
 
 @Controller('toasts')
 export class ToastsController {
@@ -13,14 +22,14 @@ export class ToastsController {
   }
 
   @Post()
-  async create(@Body() toast: ToastDto): Promise<Toast> {
+  async create(@Body() toast: ToastCreateDto): Promise<Toast> {
     return this.toastsService.create(toast);
   }
 
   @Put(':id')
   async update(
     @Param('id') id: number,
-    @Body() toastUpdated: ToastDto
+    @Body() toastUpdated: ToastEditDto
   ): Promise<[affectedCount: number]> {
     return this.toastsService.update(id, toastUpdated);
   }
@@ -58,5 +67,10 @@ export class ToastsController {
   @Get('LeaderBoard')
   async getLeaderBoard(): Promise<Toast[]> {
     return this.toastsService.getLeaderBoard();
+  }
+
+  @Delete(':id')
+  async delete(@Param('id') id: string) {
+    return this.toastsService.delete(id);
   }
 }

@@ -22,15 +22,17 @@ export const ToastsCard = () => {
               passedToastsList.map((item, index) => (
                 <Toast
                   key={index}
-                  user={item.user.firstName + ' ' + item.user.lastName}
+                  username={item.user.firstName + ' ' + item.user.lastName}
                   date={item.date.split('T')[0]}
+                  toastId={item.id}
+                  hasHappened={item.hasHappened}
                 />
               ))
             )}
-            <Toast user="" date="" />
-            <Toast user="" date="" />
-            <Toast user="" date="" />
-            <Toast user="" date="" />
+            <Toast username="" date="" toastId="" hasHappened={false} />
+            <Toast username="" date="" toastId="" hasHappened={false} />
+            <Toast username="" date="" toastId="" hasHappened={false} />
+            <Toast username="" date="" toastId="" hasHappened={false} />
           </div>
         </div>
         <div className={styles.mainSection}>
@@ -42,15 +44,17 @@ export const ToastsCard = () => {
               futureToastsList.map((item, index) => (
                 <Toast
                   key={index}
-                  user={item.user.firstName + ' ' + item.user.lastName}
+                  username={item.user.firstName + ' ' + item.user.lastName}
                   date={item.date.split('T')[0]}
+                  toastId={item.id}
+                  hasHappened={item.hasHappened}
                 />
               ))
             )}
-            <Toast user="" date="" />
-            <Toast user="" date="" />
-            <Toast user="" date="" />
-            <Toast user="" date="" />
+            <Toast username="" date="" toastId="" hasHappened={false} />
+            <Toast username="" date="" toastId="" hasHappened={false} />
+            <Toast username="" date="" toastId="" hasHappened={false} />
+            <Toast username="" date="" toastId="" hasHappened={false} />
           </div>
         </div>
       </div>

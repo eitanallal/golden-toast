@@ -53,4 +53,5 @@
   font-size: 0.5rem;
   width: min-content;
   align-self: center;
+  cursor: pointer;
 }

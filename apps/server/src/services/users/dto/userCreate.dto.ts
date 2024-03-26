@@ -1,9 +1,6 @@
-import { IsBoolean, IsString, IsUUID, MinLength } from 'class-validator';
+import { IsBoolean, IsString, MinLength } from 'class-validator';
 
-export class UserDto {
-  @IsUUID()
-  readonly id?: string;
-
+export class UserCreateDto {
   @IsString()
   @MinLength(4, { message: 'Username is 4+ characters' })
   readonly username: string;

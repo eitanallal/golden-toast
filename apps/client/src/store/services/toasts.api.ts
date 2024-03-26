@@ -46,6 +46,32 @@ const extendedApi = serverApi.injectEndpoints({
       }),
       invalidatesTags: ['Toasts'],
     }),
+
+    delete: builder.mutation<boolean, { id: string }>({
+      query: (body) => ({
+        url: `/toasts/${body.id}`,
+        method: 'DELETE',
+        formData: true,
+      }),
+      invalidatesTags: ['Toasts', 'Users'],
+    }),
+
+    editToast: builder.mutation<
+      boolean,
+      {
+        id: string;
+        date?: string;
+        hasHappened?: boolean;
+      }
+    >({
+      query: (body) => ({
+        url: `/toasts/${body.id}`,
+        method: 'PUT',
+        body,
+        formData: true,
+      }),
+      invalidatesTags: ['Toasts', 'Users'],
+    }),
   }),
 });
 
@@ -57,4 +83,6 @@ export const {
   useGetCurrentScoreQuery,
   useGetBestScoreQuery,
   useAddMutation,
+  useEditToastMutation,
+  useDeleteMutation,
 } = extendedApi;

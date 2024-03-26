@@ -1,8 +1,6 @@
 import { IsUUID, IsBoolean, IsDateString } from 'class-validator';
 
-export class ToastDto {
-  @IsUUID('4')
-  readonly id: string;
+export class ToastCreateDto {
   @IsUUID('4')
   readonly userId: string;
   @IsDateString()
