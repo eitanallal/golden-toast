@@ -4,6 +4,7 @@ import { Toast } from './entities/toast.model';
 import { ToastDto } from './dto/toast.dto';
 import { Op, Sequelize } from 'sequelize';
 import { User } from '../users/entities/user.model';
+import { ToastCreateDto, ToastEditDto } from './dto';
 
 @Injectable()
 export class ToastsService {
@@ -16,7 +17,7 @@ export class ToastsService {
     return await this.toastModel.findAll({ include: [{ model: User }] });
   }
 
-  async create(toast: ToastDto): Promise<Toast> {
+  async create(toast: ToastCreateDto): Promise<Toast> {
     return this.toastModel.create(toast);
   }
 
@@ -29,7 +30,7 @@ export class ToastsService {
 
   async update(
     id: number,
-    toastUpdated: ToastDto
+    toastUpdated: ToastEditDto
   ): Promise<[affectedCount: number]> {
     const numberAffected = await this.toastModel.update(toastUpdated, {
       where: { id: id },

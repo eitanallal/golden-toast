@@ -16,8 +16,8 @@ export const Toast: React.FC<ToastProps> = ({
   toastId,
   hasHappened,
 }) => {
-  const [editToastModal, setEditToastModal] = useState(false);
-  if (username === '') {
+  const [isEditToastModal, setIsEditToastModal] = useState(false);
+  if (!username) {
     return <div className={styles.empty_toast}></div>;
   } else {
     return (
@@ -26,14 +26,14 @@ export const Toast: React.FC<ToastProps> = ({
         <div className={styles.datebox}>{date}</div>
         <EditIcon
           className={styles.edit_button}
-          onClick={() => setEditToastModal(true)}
+          onClick={() => setIsEditToastModal(true)}
         ></EditIcon>
         <ToastEdit
           date={date}
           toastId={toastId}
           hasHappened={hasHappened}
-          editToastModal={editToastModal}
-          setEditToastModal={setEditToastModal}
+          isOpen={isEditToastModal}
+          setIsOpen={setIsEditToastModal}
         />
       </div>
     );

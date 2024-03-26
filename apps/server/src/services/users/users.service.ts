@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { User } from './entities/user.model';
-import { UserDto } from './dto/user.dto';
+import { UserDto, UserEditDto, UserCreateDto } from './dto';
 import { InvalidUsernamePasswordException } from './exceptions/invalid-username-password.error';
 
 @Injectable()
@@ -15,13 +15,13 @@ export class UsersService {
     return await this.userModel.findAll({ order: [['username', 'ASC']] });
   }
 
-  async create(user: UserDto): Promise<User> {
+  async create(user: UserCreateDto): Promise<UserCreateDto> {
     return this.userModel.create(user);
   }
 
   async update(
     id: number,
-    userUpdated: UserDto
+    userUpdated: UserEditDto
   ): Promise<[affectedCount: number]> {
     const numberAffected = await this.userModel.update(userUpdated, {
       where: { id: id },

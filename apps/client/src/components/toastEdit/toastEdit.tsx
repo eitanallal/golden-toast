@@ -11,47 +11,41 @@ type ToastEditProps = {
   date: string;
   toastId: string;
   hasHappened: boolean;
-  editToastModal: boolean;
-  setEditToastModal: React.Dispatch<React.SetStateAction<boolean>>;
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const ToastEdit: React.FC<ToastEditProps> = ({
   date,
   toastId,
   hasHappened,
-  editToastModal,
-  setEditToastModal,
+  isOpen,
+  setIsOpen,
 }) => {
   const [editToast, result] = useEditToastMutation({
     fixedCacheKey: 'edit-toast-mutation',
   });
   const [deleteToast, resultDeletion] = useDeleteMutation();
-  const [checked, setChecked] = useState<boolean>(hasHappened);
+  const [isChecked, setIsChecked] = useState<boolean>(hasHappened);
   useEffect(() => {
-    setChecked(hasHappened);
-    return;
-  }, [hasHappened, editToastModal]);
+    setIsChecked(hasHappened);
+  }, [hasHappened, isOpen]);
 
   const handleDelete = async () => {
     deleteToast({ id: toastId }).unwrap();
-    console.log(resultDeletion);
-    setEditToastModal(false);
+    setIsOpen(false);
   };
   const handleEdit = async () => {
     editToast({
       id: toastId,
       date: date,
-      hasHappened: checked,
+      hasHappened: isChecked,
     }).unwrap();
-    setEditToastModal(false);
+    setIsOpen(false);
   };
 
   return (
-    <Dialog
-      open={editToastModal}
-      onClose={() => setEditToastModal(false)}
-      maxWidth={false}
-    >
+    <Dialog open={isOpen} onClose={() => setIsOpen(false)} maxWidth={false}>
       <div className={styles.editToastMenu}>
         <div className={styles.editToastTitle}>Edit Toast</div>
         <div className={styles.editToastForm}>
@@ -73,8 +67,8 @@ export const ToastEdit: React.FC<ToastEditProps> = ({
                 Happened
               </label>
               <Switch
-                checked={checked}
-                onChange={(event) => setChecked(event.target.checked)}
+                checked={isChecked}
+                onChange={(event) => setIsChecked(event.target.checked)}
               />
             </div>
           </div>

@@ -10,6 +10,7 @@ import {
 import { ToastsService } from './toasts.service';
 import { Toast } from './entities/toast.model';
 import { ToastDto } from './dto/toast.dto';
+import { ToastCreateDto, ToastEditDto } from './dto';
 
 @Controller('toasts')
 export class ToastsController {
@@ -21,14 +22,14 @@ export class ToastsController {
   }
 
   @Post()
-  async create(@Body() toast: ToastDto): Promise<Toast> {
+  async create(@Body() toast: ToastCreateDto): Promise<Toast> {
     return this.toastsService.create(toast);
   }
 
   @Put(':id')
   async update(
     @Param('id') id: number,
-    @Body() toastUpdated: ToastDto
+    @Body() toastUpdated: ToastEditDto
   ): Promise<[affectedCount: number]> {
     return this.toastsService.update(id, toastUpdated);
   }
