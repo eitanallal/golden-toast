@@ -1,0 +1,53 @@
+:root {
+  --card_background: rgb(255, 221, 163);
+}
+
+::-webkit-scrollbar {
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background-color: white;
+  background: rgba(0, 0, 0, 0.12);
+  margin: 0.7rem;
+  border-radius: 2em;
+}
+::-webkit-scrollbar-thumb {
+  background: white;
+  size: 5px;
+  border: solid 1px black;
+  border-radius: 1em;
+}
+
+.editToastMenu {
+  width: 40rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.editToastTitle {
+  font-size: 3rem;
+  padding-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  width: 40rem;
+}
+
+.editToastForm {
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1rem;
+}
+
+.titleAndBox {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 2rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1rem;
+}

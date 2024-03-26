@@ -6,9 +6,12 @@ export class ToastDto {
   @IsOptional()
   readonly id: string;
   @IsUUID('4')
+  @IsOptional()
   readonly userId: string;
   @IsDateString()
+  @IsOptional()
   readonly date: Date;
   @IsBoolean()
+  @IsOptional()
   readonly hasHappened: boolean;
 }
