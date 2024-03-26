@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styles from './toast.module.css';
 import { ToastEdit } from '../';
+import EditIcon from '@mui/icons-material/Edit';
 
 type ToastProps = {
   toastId: string;
@@ -23,12 +24,10 @@ export const Toast: React.FC<ToastProps> = ({
       <div className={styles.single_toast}>
         <div className={styles.userbox}>{username}</div>
         <div className={styles.datebox}>{date}</div>
-        <button
+        <EditIcon
           className={styles.edit_button}
           onClick={() => setEditToastModal(true)}
-        >
-          Edit
-        </button>
+        ></EditIcon>
         <ToastEdit
           date={date}
           toastId={toastId}

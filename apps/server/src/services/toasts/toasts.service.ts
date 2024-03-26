@@ -20,6 +20,13 @@ export class ToastsService {
     return this.toastModel.create(toast);
   }
 
+  async delete(id: string) {
+    const deleted = await this.toastModel.destroy({
+      where: { id },
+    });
+    return deleted > 0;
+  }
+
   async update(
     id: number,
     toastUpdated: ToastDto

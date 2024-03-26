@@ -1,7 +1,11 @@
 import { Dialog, Switch } from '@mui/material';
 import styles from './toastEdit.module.css';
-import { useEditToastMutation } from '../../store/services/toasts.api';
+import {
+  useDeleteMutation,
+  useEditToastMutation,
+} from '../../store/services/toasts.api';
 import { useEffect, useState } from 'react';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 type ToastEditProps = {
   date: string;
@@ -21,12 +25,18 @@ export const ToastEdit: React.FC<ToastEditProps> = ({
   const [editToast, result] = useEditToastMutation({
     fixedCacheKey: 'edit-toast-mutation',
   });
+  const [deleteToast, resultDeletion] = useDeleteMutation();
   const [checked, setChecked] = useState<boolean>(hasHappened);
   useEffect(() => {
     setChecked(hasHappened);
     return;
   }, [hasHappened, editToastModal]);
 
+  const handleDelete = async () => {
+    deleteToast({ id: toastId }).unwrap();
+    console.log(resultDeletion);
+    setEditToastModal(false);
+  };
   const handleEdit = async () => {
     editToast({
       id: toastId,
@@ -43,7 +53,7 @@ export const ToastEdit: React.FC<ToastEditProps> = ({
       maxWidth={false}
     >
       <div className={styles.editToastMenu}>
-        <p className={styles.editToastTitle}>Edit Toast</p>
+        <div className={styles.editToastTitle}>Edit Toast</div>
         <div className={styles.editToastForm}>
           <div className={styles.form}>
             <div className={styles.titleAndBox}>
@@ -52,7 +62,6 @@ export const ToastEdit: React.FC<ToastEditProps> = ({
               </label>
               <input
                 type="date"
-                // min={new Date().toISOString().split('T')[0]}
                 defaultValue={date}
                 className={styles.inputBox}
                 onChange={(e) => (date = e.target.value)}
@@ -76,11 +85,15 @@ export const ToastEdit: React.FC<ToastEditProps> = ({
                 handleEdit();
               }}
             >
-              Send update
+              שלח
             </button>
-            {/* <div className={styles.errorBox}>
-              <div className={styles.error}>{errorMessageEditUser}</div>
-            </div> */}
+
+            <DeleteIcon
+              sx={{ fontSize: '2rem', color: 'red', alignSelf: 'right' }}
+              onClick={() => {
+                handleDelete();
+              }}
+            />
           </div>
         </div>
       </div>

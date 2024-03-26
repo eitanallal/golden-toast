@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Put, Post, Param } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Put,
+  Post,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { ToastsService } from './toasts.service';
 import { Toast } from './entities/toast.model';
 import { ToastDto } from './dto/toast.dto';
@@ -58,5 +66,10 @@ export class ToastsController {
   @Get('LeaderBoard')
   async getLeaderBoard(): Promise<Toast[]> {
     return this.toastsService.getLeaderBoard();
+  }
+
+  @Delete(':id')
+  async delete(@Param('id') id: string) {
+    return this.toastsService.delete(id);
   }
 }

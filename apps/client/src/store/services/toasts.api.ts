@@ -47,6 +47,15 @@ const extendedApi = serverApi.injectEndpoints({
       invalidatesTags: ['Toasts'],
     }),
 
+    delete: builder.mutation<boolean, { id: string }>({
+      query: (body) => ({
+        url: `/toasts/${body.id}`,
+        method: 'DELETE',
+        formData: true,
+      }),
+      invalidatesTags: ['Toasts', 'Users'],
+    }),
+
     editToast: builder.mutation<
       boolean,
       {
@@ -75,4 +84,5 @@ export const {
   useGetBestScoreQuery,
   useAddMutation,
   useEditToastMutation,
+  useDeleteMutation,
 } = extendedApi;
