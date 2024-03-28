@@ -12,14 +12,11 @@ export const CriminalsStatus: React.FC = () => {
   const [addCriminal, resultAdd] = useAddCriminalMutation();
   const [editCriminal, resultEdit] = useEditCriminalMutation();
   const [deleteCriminal, resultDelete] = useDeleteCriminalMutation();
-  console.log(users);
 
   const handleAddDeleteCriminal = (userId: string, isCriminals: boolean) => {
     if (isCriminals) {
-      console.log(`DELETE A CRIMINAL: ${userId}`);
       deleteCriminal({ id: userId });
     } else {
-      console.log(`CREATE A CRIMINAL: ${userId}`);
       addCriminal({ userId: userId, isPersonNonGrata: false });
     }
   };
@@ -29,10 +26,8 @@ export const CriminalsStatus: React.FC = () => {
     isPersonNonGrata: boolean
   ) => {
     if (isPersonNonGrata) {
-      console.log(`SET AS CRIMINAL ONLY: ${userId}`);
       editCriminal({ id: userId, isPersonNonGrata: false });
     } else {
-      console.log(`SET AS PERSON NON GRATA: ${userId}`);
       editCriminal({ id: userId, isPersonNonGrata: true });
     }
   };

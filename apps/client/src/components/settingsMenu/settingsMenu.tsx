@@ -161,9 +161,6 @@ export const SettingsMenu: React.FC<SettingsMenuProps> = ({
                               ? parseInt(e.target.value)
                               : 0
                           );
-                          console.log(
-                            `Selected user: ${userToChangePrivilege}`
-                          );
                         }}
                       >
                         {!users || users.length === 0 ? (
