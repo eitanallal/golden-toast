@@ -8,6 +8,7 @@ import {
   useLoginMutation,
 } from '../../store';
 import { User } from '../../types/user.types';
+import { CriminalsStatus } from '../';
 
 interface SettingsMenuProps {
   setIsOpenSettingsModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -160,9 +161,6 @@ export const SettingsMenu: React.FC<SettingsMenuProps> = ({
                               ? parseInt(e.target.value)
                               : 0
                           );
-                          console.log(
-                            `Selected user: ${userToChangePrivilege}`
-                          );
                         }}
                       >
                         {!users || users.length === 0 ? (
@@ -186,6 +184,9 @@ export const SettingsMenu: React.FC<SettingsMenuProps> = ({
                   </div>
                 </div>
               </div>
+            </TabPanel>
+            <TabPanel value="4">
+              <CriminalsStatus />
             </TabPanel>
           </div>
         </TabContext>

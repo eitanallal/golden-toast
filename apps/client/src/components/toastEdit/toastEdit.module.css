@@ -19,7 +19,7 @@
 }
 
 .editToastMenu {
-  width: 70vh;
+  width: 25rem;
   display: flex;
   flex-direction: column;
   padding: 0.5rem;

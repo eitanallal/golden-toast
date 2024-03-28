@@ -9,7 +9,7 @@ import {
 } from '@nestjs/common';
 import { CriminalsService } from './criminals.service';
 import { Criminal } from './entities/criminal.model';
-import { CriminalDto } from './dto/criminal.dto';
+import { CriminalDto, CriminalCreateDto, CriminalEditDto } from './dto';
 
 @Controller('criminals')
 export class CriminalsController {
@@ -21,13 +21,18 @@ export class CriminalsController {
   }
 
   @Post()
-  async create(@Body() criminal: CriminalDto): Promise<Criminal> {
+  async create(@Body() criminal: CriminalCreateDto): Promise<Criminal> {
     return this.criminalsService.create(criminal);
   }
 
   @Delete(':id')
   async delete(@Param('id') id: string) {
     return this.criminalsService.delete(id);
+  }
+
+  @Get('allusers')
+  async getAllUsers() {
+    return this.criminalsService.getAllUsers();
   }
 
   @Get(':id')
@@ -38,7 +43,7 @@ export class CriminalsController {
   @Put(':id')
   async update(
     @Param('id') id: number,
-    @Body() CriminalUpdated: CriminalDto
+    @Body() CriminalUpdated: CriminalEditDto
   ): Promise<[affectedCount: number]> {
     return this.criminalsService.update(id, CriminalUpdated);
   }

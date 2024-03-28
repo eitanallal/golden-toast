@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { CriminalDto } from './dto/criminal.dto';
+import { CriminalCreateDto, CriminalDto, CriminalEditDto } from './dto/';
 import { Criminal } from './entities/criminal.model';
 import { User } from '../users/entities/user.model';
+import { Sequelize } from 'sequelize';
 
 @Injectable()
 export class CriminalsService {
@@ -12,16 +13,19 @@ export class CriminalsService {
   ) {}
 
   async findAll(): Promise<CriminalDto[]> {
-    return await this.criminalModel.findAll({ include: [{ model: User }] });
+    return await this.criminalModel.findAll({
+      include: [{ model: User }],
+      order: [[Sequelize.col('user.id'), 'ASC']],
+    });
   }
 
-  async create(criminal: CriminalDto): Promise<Criminal> {
+  async create(criminal: CriminalCreateDto): Promise<Criminal> {
     return this.criminalModel.create(criminal);
   }
 
   async update(
     id: number,
-    criminalUpdated: CriminalDto
+    criminalUpdated: CriminalEditDto
   ): Promise<[affectedCount: number]> {
     const numberAffected = await this.criminalModel.update(criminalUpdated, {
       where: { userId: id },
@@ -34,6 +38,19 @@ export class CriminalsService {
       where: { userId: id },
     });
     return deleted > 0;
+  }
+
+  async getAllUsers() {
+    const users = await this.criminalModel.findAll({
+      include: [{ model: User, attributes: [], right: true }],
+      attributes: [
+        [Sequelize.col('user.id'), 'id'],
+        [Sequelize.col('user.username'), 'username'],
+        [Sequelize.col('isPersonNonGrata'), 'status'],
+      ],
+      order: [[Sequelize.col('user.id'), 'ASC']],
+    });
+    return users;
   }
 
   async getByUser(id: string) {
