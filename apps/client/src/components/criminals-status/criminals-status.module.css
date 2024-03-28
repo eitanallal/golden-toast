@@ -1,0 +1,14 @@
+.cardTitle {
+  font-size: 1.75rem;
+  size: fit-content;
+  background-color: transparent;
+  text-align: center;
+}
+
+.table {
+  width: 5rem;
+}
+
+.nameColumn {
+  width: 3rem;
+}

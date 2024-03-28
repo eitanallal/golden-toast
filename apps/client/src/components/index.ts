@@ -1,6 +1,7 @@
 export * from './addToast/addToast';
 export * from './card/card';
 export * from './criminal/criminal';
+export * from './criminals-status/criminals-status';
 export * from './criminals-card/criminals-card';
 export * from './date/date';
 export * from './leaderboard-card/leaderboard-card';
