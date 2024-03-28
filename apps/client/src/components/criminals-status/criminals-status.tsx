@@ -13,6 +13,11 @@ export const CriminalsStatus: React.FC = () => {
   const [editCriminal, resultEdit] = useEditCriminalMutation();
   const [deleteCriminal, resultDelete] = useDeleteCriminalMutation();
 
+  /* user.status can have three different values:
+    - null: the user is not a criminal
+    - false: the user is a criminal
+    - true: the user is a person non grata
+  */
   const handleAddDeleteCriminal = (userId: string, isCriminals: boolean) => {
     if (isCriminals) {
       deleteCriminal({ id: userId });
