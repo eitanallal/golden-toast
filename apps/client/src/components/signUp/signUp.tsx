@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styles from './signUp.module.css';
 import { useAppDispatch, signUpUser, useSignUpMutation } from '../../store';
 import CloseIcon from '@mui/icons-material/Close';
-import { Dialog } from '@mui/material';
+import { Dialog, IconButton, Tooltip } from '@mui/material';
 import { User } from '../../types/user.types';
 interface SignUpProps {
   setIsOpenSignUpModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -67,7 +67,11 @@ export const SignUpMenu: React.FC<SignUpProps> = ({
           className={styles.exitButton}
           onClick={() => setIsOpenSignUpModal(false)}
         >
-          <CloseIcon />
+          <Tooltip title="Exit">
+            <IconButton>
+              <CloseIcon />
+            </IconButton>
+          </Tooltip>
         </button>
         <div className={styles.signupTitle}> Sign Up </div>
         <div className={styles.signupForm}>

@@ -14,6 +14,7 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { ToastContainer } from 'react-toastify';
 import { useLoginMutation } from '../store';
+import { IconButton, Tooltip } from '@mui/material';
 
 export const App = () => {
   const [isOpenLoginModal, setIsOpenLoginModal] = useState(false);
@@ -27,15 +28,15 @@ export const App = () => {
       <ToastContainer />
       <div className={styles.header}>
         <GetDate />
-        <div className={styles.appTitle}>השתיית הזהב</div>
+        <div className={styles.appTitle}>שתיית הזהב</div>
 
         {!result.data ? (
-          <button
+          <div
             className={styles.signupLoginButton}
             onClick={() => setIsOpenLoginModal(true)}
           >
             הרשם התחבר
-          </button>
+          </div>
         ) : (
           <div className={styles.helloBox}>
             <p>
@@ -66,17 +67,26 @@ export const App = () => {
         />
       </div>
       <div className={styles.mainContent}>
-        <SettingsIcon
-          sx={{ fontSize: 30, color: 'black' }}
-          onClick={() => setIsOpenSettingsModal(true)}
-        />
+        <Tooltip title="Settings">
+          <IconButton
+            sx={{ aspectRatio: 1, height: 42 }}
+            onClick={() => setIsOpenSettingsModal(true)}
+          >
+            <SettingsIcon sx={{ fontSize: 40, color: 'black' }} />
+          </IconButton>
+        </Tooltip>
         <LeaderboardCard />
         <ToastsCard />
         <CriminalsCard />
-        <AddCircleOutlineIcon
-          sx={{ fontSize: 30, color: 'green' }}
-          onClick={() => setIsOpenAddToastModal(true)}
-        />
+
+        <Tooltip title="Add a toast">
+          <IconButton
+            sx={{ aspectRatio: 1, height: 42 }}
+            onClick={() => setIsOpenAddToastModal(true)}
+          >
+            <AddCircleOutlineIcon sx={{ fontSize: 40, color: '#00a152' }} />
+          </IconButton>
+        </Tooltip>
       </div>
     </div>
   );

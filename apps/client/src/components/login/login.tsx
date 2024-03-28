@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styles from './login.module.css';
-import { Dialog } from '@mui/material';
+import { Dialog, IconButton, Tooltip } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { useLoginMutation, useAppDispatch, loginUser } from '../../store';
 
@@ -81,7 +81,11 @@ export const LoginMenu: React.FC<LoginProps> = ({
           className={styles.exitButton}
           onClick={() => setIsOpenLoginModal(false)}
         >
-          <CloseIcon />
+          <Tooltip title="Exit">
+            <IconButton>
+              <CloseIcon />
+            </IconButton>
+          </Tooltip>
         </button>
         <div className={styles.loginTitle}> Login </div>
         <div className={styles.loginForm}>
@@ -120,9 +124,7 @@ export const LoginMenu: React.FC<LoginProps> = ({
           className={styles.signinButton}
           onClick={() => handleOpenSignUpModal()}
         >
-          <div className={styles.signUpButton}>
-            Don't have an account ? Sign up here !
-          </div>
+          <div className={styles.signUpButton}>אין לך חשבון? תתחבר כאן</div>
         </button>
       </div>
     </Dialog>

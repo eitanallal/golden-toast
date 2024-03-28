@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styles from './toast.module.css';
 import { ToastEdit } from '../';
 import EditIcon from '@mui/icons-material/Edit';
+import { IconButton, Tooltip } from '@mui/material';
 
 type ToastProps = {
   toastId: string;
@@ -24,10 +25,24 @@ export const Toast: React.FC<ToastProps> = ({
       <div className={styles.single_toast}>
         <div className={styles.userbox}>{username}</div>
         <div className={styles.datebox}>{date}</div>
-        <EditIcon
-          className={styles.edit_button}
-          onClick={() => setIsEditToastModal(true)}
-        ></EditIcon>
+        <Tooltip title="Edit" placement="right">
+          <IconButton
+            sx={{
+              height: '1.8rem',
+              width: '1.8rem',
+              color: 'black',
+              ':hover': {
+                transform: 'scale',
+                background: 'rgba(0, 0, 0, 0.2)',
+              },
+            }}
+            onClick={() => setIsEditToastModal(true)}
+            className={styles.edit_button}
+          >
+            <EditIcon sx={{ height: '1.2rem', width: '1.2rem' }} />
+          </IconButton>
+        </Tooltip>
+
         <ToastEdit
           date={date}
           toastId={toastId}

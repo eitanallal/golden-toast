@@ -72,18 +72,30 @@ export const SettingsMenu: React.FC<SettingsMenuProps> = ({
       <div className={styles.settingsWindow}>
         <TabContext value={tabSelector}>
           <div className={styles.settingsMenu}>
-            <TabList onChange={handleTabChange} orientation="vertical">
-              <Tab label="Tab 1" value="1"></Tab>
-              <Tab label="Edit User Infos" value="2"></Tab>
-              <Tab label="Users Privileges" value="3"></Tab>
-              <Tab label="Criminals" value="4"></Tab>
+            <TabList
+              onChange={handleTabChange}
+              orientation="vertical"
+              sx={{ maxWidth: '20%' }}
+            >
+              <Tab className={styles.tab} label="Tab 1" value="1"></Tab>
+              <Tab
+                className={styles.tab}
+                label="Edit User Infos"
+                value="2"
+              ></Tab>
+              <Tab
+                className={styles.tab}
+                label="Users Privileges"
+                value="3"
+              ></Tab>
+              <Tab className={styles.tab} label="Criminals" value="4"></Tab>
             </TabList>
 
             <TabPanel value="1">WELCOME TO MENU 1</TabPanel>
             <TabPanel value="2">
-              <div className={styles.editMenu}>
-                <div className={styles.editTitle}> Edit User </div>
-                <div className={styles.editForm}>
+              <div className={styles.tabMenu}>
+                <div className={styles.tabName}> Edit User </div>
+                <div className={styles.tabForm}>
                   <div className={styles.form}>
                     <div className={styles.titleAndBox}>
                       <label className={styles.labelForm} htmlFor="">
@@ -146,9 +158,9 @@ export const SettingsMenu: React.FC<SettingsMenuProps> = ({
               </div>
             </TabPanel>
             <TabPanel value="3">
-              <div className={styles.signupMenu}>
-                <div className={styles.signupTitle}> User Privileges</div>
-                <div className={styles.signupForm}>
+              <div className={styles.tabMenu}>
+                <div className={styles.tabName}> User Privileges</div>
+                <div className={styles.tabForm}>
                   <div className={styles.form}>
                     <div className={styles.userAdminBox}>
                       <select

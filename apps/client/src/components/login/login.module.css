@@ -65,6 +65,12 @@
   border: none;
   display: flex;
   justify-content: center;
+  cursor: pointer;
+}
+
+.signUpButton:hover {
+  color: blue;
+  text-decoration: underline;
 }
 
 .exitButton {
