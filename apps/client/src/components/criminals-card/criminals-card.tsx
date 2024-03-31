@@ -1,13 +1,13 @@
 import { CriminalType } from '../../types/criminal.types';
 import styles from './criminals-card.module.css';
 import { Card, Criminal } from '../';
-import { useLoginMutation, useGetCriminalsQuery } from '../../store';
+import { useGetCriminalsQuery } from '../../store';
 
 export const CriminalsCard: React.FC = () => {
   const { data: criminals } = useGetCriminalsQuery();
 
   return (
-    <Card>
+    <Card width="22%">
       <div className={styles.cardContent}>
         <div className={styles.cardTitle}>עבריינים</div>
         <div className={styles.criminalsContent}>

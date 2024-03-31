@@ -69,6 +69,7 @@ export const App = () => {
       <div className={styles.mainContent}>
         <Tooltip title="Settings">
           <IconButton
+            className={styles.iconButton}
             sx={{ aspectRatio: 1, height: 42 }}
             onClick={() => setIsOpenSettingsModal(true)}
           >
@@ -81,6 +82,7 @@ export const App = () => {
 
         <Tooltip title="Add a toast">
           <IconButton
+            className={styles.iconButton}
             sx={{ aspectRatio: 1, height: 42 }}
             onClick={() => setIsOpenAddToastModal(true)}
           >

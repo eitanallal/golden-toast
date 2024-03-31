@@ -50,7 +50,7 @@ export const AddToast: React.FC<AddToastProps> = ({
         <div className={styles.addToastForm}>
           <div className={styles.form}>
             <div className={styles.titleAndBox}>
-              <label htmlFor="">username</label>
+              <label htmlFor="">שם משתמש</label>
               <select
                 className={styles.inputBox}
                 name="user"
@@ -68,7 +68,7 @@ export const AddToast: React.FC<AddToastProps> = ({
                 )}
               </select>
 
-              <label htmlFor="">Date</label>
+              <label htmlFor="">תעריך</label>
               <input
                 type="date"
                 min={new Date().toISOString().split('T')[0]}
@@ -78,14 +78,14 @@ export const AddToast: React.FC<AddToastProps> = ({
             </div>
           </div>
           <div className={styles.validationButtonContainer}>
-            <button
+            <div
               className={styles.validationButton}
               onClick={() => {
                 handleAddToast();
               }}
             >
-              Add
-            </button>
+              להוסיף
+            </div>
           </div>
         </div>
       </div>

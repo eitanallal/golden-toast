@@ -73,14 +73,14 @@ export const ToastEdit: React.FC<ToastEditProps> = ({
             </div>
           </div>
           <div className={styles.validationButtonContainer}>
-            <button
+            <div
               className={styles.validationButton}
               onClick={() => {
                 handleEdit();
               }}
             >
               שלח
-            </button>
+            </div>
 
             <DeleteIcon
               sx={{ fontSize: '2rem', color: 'red', alignSelf: 'right' }}

@@ -24,6 +24,7 @@
   flex-direction: column;
   padding-bottom: 0.75rem;
   font-size: 1.5rem;
+  text-align: right;
 }
 
 .form {
@@ -38,9 +39,18 @@
 }
 
 .validationButton {
-  width: 3rem;
-  height: 2rem;
+  width: 10rem;
   font-size: 1rem;
+  background-color: var(--background0);
+  cursor: pointer;
+  text-align: center;
+  border-radius: 0.3rem;
+  border: solid 2px black;
+  font-weight: bold;
+}
+
+.validationButton:hover {
+  background-color: chocolate;
 }
 
 .deleteButton {
@@ -50,4 +60,5 @@
 
 .inputBox {
   width: 100%;
+  direction: rtl;
 }

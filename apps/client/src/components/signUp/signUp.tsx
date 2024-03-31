@@ -34,18 +34,6 @@ export const SignUpMenu: React.FC<SignUpProps> = ({
       isAdmin: isAdmin,
     })
       .unwrap()
-      .then((result: User) => {
-        dispatch(
-          signUpUser({
-            id: result.id,
-            username: result.username,
-            firstName: result.firstName,
-            lastName: result.lastName,
-            password: result.password,
-            isAdmin: result.isAdmin,
-          })
-        );
-      })
       .catch((error) => {
         if (error.data.message) {
           setSignUpError(error.data.message[0]);
@@ -68,16 +56,16 @@ export const SignUpMenu: React.FC<SignUpProps> = ({
           onClick={() => setIsOpenSignUpModal(false)}
         >
           <Tooltip title="Exit">
-            <IconButton>
+            <IconButton className={styles.iconButton}>
               <CloseIcon />
             </IconButton>
           </Tooltip>
         </button>
-        <div className={styles.signupTitle}> Sign Up </div>
+        <div className={styles.signupTitle}> הרשם </div>
         <div className={styles.signupForm}>
           <div className={styles.form}>
             <div className={styles.titleAndBox}>
-              <label htmlFor="">Username</label>
+              <label htmlFor="">שם משתמש</label>
               <input
                 className={styles.inputBox}
                 onChange={(e) => setUsername(e.target.value)}
@@ -85,7 +73,7 @@ export const SignUpMenu: React.FC<SignUpProps> = ({
             </div>
 
             <div className={styles.titleAndBox}>
-              <label htmlFor="">First Name</label>
+              <label htmlFor="">שם פרטי</label>
               <input
                 className={styles.inputBox}
                 onChange={(e) => setFirstName(e.target.value)}
@@ -93,7 +81,7 @@ export const SignUpMenu: React.FC<SignUpProps> = ({
             </div>
 
             <div className={styles.titleAndBox}>
-              <label htmlFor="">Last Name</label>
+              <label htmlFor="">שם משפחה</label>
               <input
                 className={styles.inputBox}
                 onChange={(e) => setLastName(e.target.value)}
@@ -101,7 +89,7 @@ export const SignUpMenu: React.FC<SignUpProps> = ({
             </div>
 
             <div className={styles.titleAndBox}>
-              <label htmlFor="">Password</label>
+              <label htmlFor="">סיסמה</label>
               <input
                 className={styles.inputBox}
                 onChange={(e) => setPassword(e.target.value)}
@@ -109,14 +97,14 @@ export const SignUpMenu: React.FC<SignUpProps> = ({
             </div>
           </div>
           <div className={styles.validationButtonContainer}>
-            <button
+            <div
               className={styles.validationButton}
               onClick={() => {
                 handleSignUp();
               }}
             >
-              Add
-            </button>
+              הרשם
+            </div>
             <div className={styles.errorBox}>
               <div className={styles.error}>{signUpError}</div>
             </div>

@@ -14,6 +14,11 @@ const extendedApi = serverApi.injectEndpoints({
       providesTags: ['Toasts'],
     }),
 
+    getPassedUserToasts: builder.query<Toast[], string | undefined>({
+      query: (userId: string) => `toasts/past/${userId}`,
+      providesTags: ['Toasts'],
+    }),
+
     getPassedToasts: builder.query<Toast[], void>({
       query: () => 'toasts/past/',
       providesTags: ['Toasts'],
@@ -85,4 +90,5 @@ export const {
   useAddMutation,
   useEditToastMutation,
   useDeleteMutation,
+  useGetPassedUserToastsQuery,
 } = extendedApi;

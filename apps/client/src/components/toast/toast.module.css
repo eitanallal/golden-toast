@@ -24,6 +24,7 @@
 }
 
 .single_toast {
+  padding: 0 0.2rem;
   border: solid 2px;
   border-radius: 15%;
   width: 6.5rem;
@@ -51,6 +52,7 @@
 
 .empty_toast {
   max-height: 0;
+  padding: 0 0.2rem;
   border: solid 2px transparent;
   width: 6.5rem;
 }
@@ -60,4 +62,8 @@
   align-self: center;
   cursor: pointer;
   color: black;
+}
+
+.edit_button:hover {
+  background-color: rgba(0, 0, 0, 0.12);
 }

@@ -11,7 +11,7 @@ export const LeaderboardCard: React.FC = () => {
   const { data: currentScore } = useGetCurrentScoreQuery();
   const { data: leaderboardList } = useGetLeaderBoardQuery();
   return (
-    <Card>
+    <Card width="22%">
       <div className={styles.cardContent}>
         <div className={styles.cardTitle}>לוח תוצאות</div>
         <div className={styles.list}>

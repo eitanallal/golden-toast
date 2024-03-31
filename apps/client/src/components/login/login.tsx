@@ -77,21 +77,21 @@ export const LoginMenu: React.FC<LoginProps> = ({
       maxWidth={false}
     >
       <div className={styles.loginMenu}>
-        <button
+        <div
           className={styles.exitButton}
           onClick={() => setIsOpenLoginModal(false)}
         >
           <Tooltip title="Exit">
-            <IconButton>
+            <IconButton className={styles.iconButton}>
               <CloseIcon />
             </IconButton>
           </Tooltip>
-        </button>
-        <div className={styles.loginTitle}> Login </div>
+        </div>
+        <div className={styles.loginTitle}> התחבר </div>
         <div className={styles.loginForm}>
           <div className={styles.form}>
             <div className={styles.titleAndBox}>
-              <label htmlFor="">Username</label>
+              <label htmlFor="">שם משתמש</label>
               <input
                 className={styles.inputBox}
                 onChange={(e) => setUsername(e.target.value)}
@@ -99,7 +99,7 @@ export const LoginMenu: React.FC<LoginProps> = ({
             </div>
 
             <div className={styles.titleAndBox}>
-              <label htmlFor="">Password</label>
+              <label htmlFor="">סיסמה</label>
               <input
                 className={styles.inputBox}
                 onChange={(e) => setPassword(e.target.value)}
@@ -107,14 +107,14 @@ export const LoginMenu: React.FC<LoginProps> = ({
             </div>
           </div>
           <div className={styles.validationButtonContainer}>
-            <button
+            <div
               className={styles.validationButton}
               onClick={() => {
                 handleLogin();
               }}
             >
-              Add
-            </button>
+              התחבר
+            </div>
             <div className={styles.errorBox}>
               <div className={styles.error}>{loginError}</div>
             </div>
