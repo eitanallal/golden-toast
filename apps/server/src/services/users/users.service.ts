@@ -16,7 +16,7 @@ export class UsersService {
   }
 
   async create(user: UserCreateDto): Promise<UserCreateDto> {
-    return this.userModel.create(user);
+    return await this.userModel.create(user);
   }
 
   async update(
@@ -27,12 +27,6 @@ export class UsersService {
       where: { id: id },
     });
     return numberAffected;
-  }
-
-  async getTotalNumberOfAdmins(): Promise<number> {
-    const wholeTable = this.userModel.findAll({ where: { isAdmin: true } });
-    const numberOfAdmin = (await wholeTable).length;
-    return numberOfAdmin;
   }
 
   async getUserData(id: string): Promise<User> {

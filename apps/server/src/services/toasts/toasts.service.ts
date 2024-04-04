@@ -18,7 +18,7 @@ export class ToastsService {
   }
 
   async create(toast: ToastCreateDto): Promise<Toast> {
-    return this.toastModel.create(toast);
+    return await this.toastModel.create(toast);
   }
 
   async delete(id: string) {

@@ -19,7 +19,7 @@
 
 .tabName {
   font-size: 2rem;
-  white-space: nowrap;
+  /* white-space: nowrap; */
   padding-bottom: 1rem;
 }
 

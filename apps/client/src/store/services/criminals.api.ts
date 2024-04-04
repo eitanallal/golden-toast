@@ -16,7 +16,7 @@ const extendedApi = serverApi.injectEndpoints({
 
     getUserStatus: builder.query<number, string>({
       query: (id: string) => `criminals/${id}`,
-      providesTags: ['Criminals'],
+      providesTags: ['Criminals', 'Users'],
     }),
 
     addCriminal: builder.mutation<

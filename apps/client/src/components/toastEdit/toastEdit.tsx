@@ -35,8 +35,9 @@ export const ToastEdit: React.FC<ToastEditProps> = ({
 
   const [isChecked, setIsChecked] = useState<boolean>(hasHappened);
   useEffect(() => {
+    trigger(userId);
     setIsChecked(hasHappened);
-  }, [hasHappened, isOpen]);
+  }, [trigger, hasHappened, userId, isOpen]);
 
   const handleDelete = async () => {
     deleteToast({ id: toastId }).unwrap();
@@ -49,7 +50,7 @@ export const ToastEdit: React.FC<ToastEditProps> = ({
       hasHappened: isChecked,
     }).unwrap();
     if (!isChecked) {
-      trigger(userId);
+      console.log(userResult.data);
       if (!userResult.data)
         addCriminal({ userId: userId, isPersonNonGrata: false });
     }

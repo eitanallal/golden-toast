@@ -99,6 +99,7 @@ export const SignUpMenu: React.FC<SignUpProps> = ({
               <input
                 id="password"
                 name="password"
+                type="password"
                 className={styles.inputBox}
                 onChange={(e) => setPassword(e.target.value)}
               />

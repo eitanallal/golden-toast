@@ -24,12 +24,6 @@ export class UsersController {
   ): Promise<[affectedCount: number]> {
     return this.usersService.update(id, userUpdated);
   }
-
-  @Get('totalNumberOfAdmins')
-  async getTotalNumberOfAdmins(): Promise<number> {
-    return this.usersService.getTotalNumberOfAdmins();
-  }
-
   @Get('username/:id')
   async getUserData(@Param('id') id: string): Promise<User> {
     return this.usersService.getUserData(id);

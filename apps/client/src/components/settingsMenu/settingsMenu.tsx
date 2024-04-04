@@ -97,7 +97,11 @@ export const SettingsMenu: React.FC<SettingsMenuProps> = ({
               ></Tab>
             </TabList>
 
-            <TabPanel value="1">WELCOME TO MENU 1</TabPanel>
+            <TabPanel value="1">
+              <div className={styles.tabName}>
+                ברוכים הבאים לפרויקט שתיות של ה חפיפה של איתן אלאל.{' '}
+              </div>
+            </TabPanel>
             <TabPanel value="2">
               <div className={styles.tabMenu}>
                 <div className={styles.tabName}> עריכת נתוני משתמש </div>
@@ -149,6 +153,7 @@ export const SettingsMenu: React.FC<SettingsMenuProps> = ({
                         className={styles.inputBox}
                         defaultValue={loggedInUser.data?.password}
                         onChange={(e) => setPassword(e.target.value)}
+                        type="password"
                       />
                       <label className={styles.labelForm} htmlFor="password">
                         סיסמה

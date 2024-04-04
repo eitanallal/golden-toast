@@ -107,6 +107,7 @@ export const LoginMenu: React.FC<LoginProps> = ({
                 name="password"
                 className={styles.inputBox}
                 onChange={(e) => setPassword(e.target.value)}
+                type="password"
               />
             </div>
           </div>

@@ -20,7 +20,7 @@ export class CriminalsService {
   }
 
   async create(criminal: CriminalCreateDto): Promise<Criminal> {
-    return this.criminalModel.create(criminal);
+    return await this.criminalModel.create(criminal);
   }
 
   async update(
