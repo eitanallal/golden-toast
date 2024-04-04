@@ -151,6 +151,9 @@ export class ToastsService {
       group: [Sequelize.fn('DATE_PART', 'year', Sequelize.col('date'))],
       order: [['Total_Count', 'DESC']],
     });
+    if (list.length === 0) {
+      return 0;
+    }
     const recordSemester = list[0].dataValues['Total_Count'];
     return recordSemester;
   }

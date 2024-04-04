@@ -1,11 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css?family=Poppins');
+@import url('https://fonts.googleapis.com/css2?family=Rubik');
 html,
 body,
 #root {
   width: 100%;
   height: 100%;
-  font-family: 'Poppins';
+  font-family: 'Rubik';
   margin: auto;
   overflow-y: hidden;
 }

@@ -72,72 +72,98 @@ export const SettingsMenu: React.FC<SettingsMenuProps> = ({
       <div className={styles.settingsWindow}>
         <TabContext value={tabSelector}>
           <div className={styles.settingsMenu}>
-            <TabList onChange={handleTabChange} orientation="vertical">
-              <Tab label="Tab 1" value="1"></Tab>
-              <Tab label="Edit User Infos" value="2"></Tab>
-              <Tab label="Users Privileges" value="3"></Tab>
-              <Tab label="Criminals" value="4"></Tab>
+            <TabList
+              onChange={handleTabChange}
+              orientation="vertical"
+              sx={{ maxWidth: '20%' }}
+            >
+              <Tab className={styles.tab} label="אודות" value="1"></Tab>
+              <Tab
+                className={styles.tab}
+                label="עריכת נתוני משתמש"
+                value="2"
+              ></Tab>
+              <Tab
+                className={styles.tab}
+                label="הרשאות משתמשים "
+                value="3"
+                disabled={!loggedInUser.data || !loggedInUser.data?.isAdmin}
+              ></Tab>
+              <Tab
+                className={styles.tab}
+                label="עבריינים"
+                value="4"
+                disabled={!loggedInUser.data || !loggedInUser.data?.isAdmin}
+              ></Tab>
             </TabList>
 
             <TabPanel value="1">WELCOME TO MENU 1</TabPanel>
             <TabPanel value="2">
-              <div className={styles.editMenu}>
-                <div className={styles.editTitle}> Edit User </div>
-                <div className={styles.editForm}>
+              <div className={styles.tabMenu}>
+                <div className={styles.tabName}> עריכת נתוני משתמש </div>
+                <div className={styles.tabForm}>
                   <div className={styles.form}>
                     <div className={styles.titleAndBox}>
-                      <label className={styles.labelForm} htmlFor="">
-                        Username
-                      </label>
                       <input
+                        id="username"
+                        name="username"
                         className={styles.inputBox}
                         defaultValue={loggedInUser.data?.username}
                         onChange={(e) => setUsername(e.target.value)}
                       />
+                      <label className={styles.labelForm} htmlFor="username">
+                        שם משתמש
+                      </label>
                     </div>
 
                     <div className={styles.titleAndBox}>
-                      <label className={styles.labelForm} htmlFor="">
-                        First Name
-                      </label>
                       <input
+                        id="firstname"
+                        name="firstname"
                         className={styles.inputBox}
                         defaultValue={loggedInUser.data?.firstName}
                         onChange={(e) => setFirstName(e.target.value)}
                       />
+                      <label className={styles.labelForm} htmlFor="firstname">
+                        שם פרטי
+                      </label>
                     </div>
 
                     <div className={styles.titleAndBox}>
-                      <label className={styles.labelForm} htmlFor="">
-                        Last Name
-                      </label>
                       <input
+                        id="lastname"
+                        name="lastname"
                         className={styles.inputBox}
                         defaultValue={loggedInUser.data?.lastName}
                         onChange={(e) => setLastName(e.target.value)}
                       />
+                      <label className={styles.labelForm} htmlFor="lastname">
+                        שם משפחה
+                      </label>
                     </div>
 
                     <div className={styles.titleAndBox}>
-                      <label className={styles.labelForm} htmlFor="">
-                        Password
-                      </label>
                       <input
+                        id="password"
+                        name="password"
                         className={styles.inputBox}
                         defaultValue={loggedInUser.data?.password}
                         onChange={(e) => setPassword(e.target.value)}
                       />
+                      <label className={styles.labelForm} htmlFor="password">
+                        סיסמה
+                      </label>
                     </div>
                   </div>
                   <div className={styles.validationButtonContainer}>
-                    <button
+                    <div
                       className={styles.validationButton}
                       onClick={() => {
                         handleEdit();
                       }}
                     >
-                      Edit
-                    </button>
+                      עריכה
+                    </div>
                     <div className={styles.errorBox}>
                       <div className={styles.error}>{errorMessageEditUser}</div>
                     </div>
@@ -146,9 +172,9 @@ export const SettingsMenu: React.FC<SettingsMenuProps> = ({
               </div>
             </TabPanel>
             <TabPanel value="3">
-              <div className={styles.signupMenu}>
-                <div className={styles.signupTitle}> User Privileges</div>
-                <div className={styles.signupForm}>
+              <div className={styles.tabMenu}>
+                <div className={styles.tabName}> הרשאות משתמשים </div>
+                <div className={styles.tabForm}>
                   <div className={styles.form}>
                     <div className={styles.userAdminBox}>
                       <select

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styles from './login.module.css';
-import { Dialog } from '@mui/material';
+import { Dialog, IconButton, Tooltip } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { useLoginMutation, useAppDispatch, loginUser } from '../../store';
 
@@ -77,26 +77,34 @@ export const LoginMenu: React.FC<LoginProps> = ({
       maxWidth={false}
     >
       <div className={styles.loginMenu}>
-        <button
+        <div
           className={styles.exitButton}
           onClick={() => setIsOpenLoginModal(false)}
         >
-          <CloseIcon />
-        </button>
-        <div className={styles.loginTitle}> Login </div>
+          <Tooltip title="Exit">
+            <IconButton className={styles.iconButton}>
+              <CloseIcon />
+            </IconButton>
+          </Tooltip>
+        </div>
+        <div className={styles.loginTitle}> התחבר </div>
         <div className={styles.loginForm}>
           <div className={styles.form}>
             <div className={styles.titleAndBox}>
-              <label htmlFor="">Username</label>
+              <label htmlFor="username">שם משתמש</label>
               <input
+                id="username"
+                name="username"
                 className={styles.inputBox}
                 onChange={(e) => setUsername(e.target.value)}
               />
             </div>
 
             <div className={styles.titleAndBox}>
-              <label htmlFor="">Password</label>
+              <label htmlFor="password">סיסמה</label>
               <input
+                id="password"
+                name="password"
                 className={styles.inputBox}
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -109,7 +117,7 @@ export const LoginMenu: React.FC<LoginProps> = ({
                 handleLogin();
               }}
             >
-              Add
+              התחבר
             </button>
             <div className={styles.errorBox}>
               <div className={styles.error}>{loginError}</div>
@@ -120,9 +128,7 @@ export const LoginMenu: React.FC<LoginProps> = ({
           className={styles.signinButton}
           onClick={() => handleOpenSignUpModal()}
         >
-          <div className={styles.signUpButton}>
-            Don't have an account ? Sign up here !
-          </div>
+          <div className={styles.signUpButton}>אין לך חשבון? תתחבר כאן</div>
         </button>
       </div>
     </Dialog>

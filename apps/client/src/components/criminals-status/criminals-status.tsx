@@ -39,43 +39,48 @@ export const CriminalsStatus: React.FC = () => {
 
   return (
     <table className={styles.table}>
-      <tr>
-        <th> שם משתצש </th>
-        <th> עבריין </th>
-        <th> פרסונה נון גרטה </th>
-      </tr>
-      {!users ? (
-        <div> No user found </div>
-      ) : (
-        users.map((user, index) => (
-          <tr key={index}>
-            <td>{user.username}</td>
-            <td>
-              <Switch
-                checked={user.status === false || user.status === true}
-                onChange={(event) => {
-                  handleAddDeleteCriminal(
-                    user.id,
-                    user.status === false || user.status === true
-                  );
-                }}
-                color="warning"
-              />
-            </td>
-            <td>
-              <Switch
-                checked={user.status === true}
-                onChange={(event) => {
-                  handleEditPersonNonGrata(user.id, user.status === true);
-                }}
-                disabled={user.status !== false && user.status !== true}
-                color="error"
-              />
-            </td>
+      <thead>
+        <tr>
+          <th style={{ fontSize: '1.2rem', width: '4rem' }}> שם משתצש </th>
+          <th style={{ fontSize: '1.2rem', width: '6rem' }}> עבריין </th>
+          <th style={{ fontSize: '1.2rem', width: '8rem' }}>פרסונה נון גרטה</th>
+        </tr>
+      </thead>
+      <tbody>
+        {!users ? (
+          <tr>
+            <td> No user found </td>
           </tr>
-        ))
-      )}
-      <div></div>
+        ) : (
+          users.map((user, index) => (
+            <tr key={index}>
+              <td style={{ textAlign: 'center' }}>{user.username}</td>
+              <td style={{ textAlign: 'center', alignContent: 'center' }}>
+                <Switch
+                  checked={user.status === false || user.status === true}
+                  onChange={(event) => {
+                    handleAddDeleteCriminal(
+                      user.id,
+                      user.status === false || user.status === true
+                    );
+                  }}
+                  color="warning"
+                />
+              </td>
+              <td style={{ textAlign: 'center', alignContent: 'center' }}>
+                <Switch
+                  checked={user.status === true}
+                  onChange={(event) => {
+                    handleEditPersonNonGrata(user.id, user.status === true);
+                  }}
+                  disabled={user.status !== false && user.status !== true}
+                  color="error"
+                />
+              </td>
+            </tr>
+          ))
+        )}
+      </tbody>
     </table>
   );
 };

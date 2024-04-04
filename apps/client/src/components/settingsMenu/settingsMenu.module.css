@@ -1,26 +1,29 @@
+.settingsWindow {
+  width: 30rem;
+  height: 20rem;
+}
+
 .settingsMenu {
   display: flex;
 }
 
-.settingsWindow {
-  width: 40rem;
-  height: 35rem;
+.tab:hover {
+  background: rgba(0, 0, 0, 0.2);
 }
 
-.editMenu {
-  width: 15rem;
-  padding: 1rem;
-  max-width: fit-content;
-  align-self: center;
-}
-
-.editTitle {
-  font-size: 2rem;
+.tabMenu {
+  padding: 0.5rem;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
 }
 
-.editForm {
+.tabName {
+  font-size: 2rem;
+  white-space: nowrap;
+  padding-bottom: 1rem;
+}
+
+.tabForm {
   font-size: 1rem;
   display: flex;
   padding-bottom: 1rem;
@@ -34,11 +37,6 @@
   padding-bottom: 2rem;
 }
 
-.labelForm {
-  min-width: 6rem;
-  white-space: nowrap;
-}
-
 .form {
   display: flex;
   flex-direction: column;
@@ -47,15 +45,37 @@
 
 .titleAndBox {
   display: flex;
+  padding-bottom: 0.5rem;
+  width: 16rem;
+  text-align: right;
+}
+
+.labelForm {
+  white-space: nowrap;
+  width: 7rem;
+  text-align: end;
+  padding-left: 0.5rem;
 }
 
 .inputBox {
   font-size: 1rem;
+  width: 10rem;
+  direction: rtl;
 }
 
 .validationButton {
   width: 10rem;
   font-size: 1rem;
+  background-color: var(--background0);
+  cursor: pointer;
+  text-align: center;
+  border-radius: 0.3rem;
+  border: solid 2px black;
+  font-weight: bold;
+}
+
+.validationButton:hover {
+  background-color: chocolate;
 }
 
 .validationButtonContainer {

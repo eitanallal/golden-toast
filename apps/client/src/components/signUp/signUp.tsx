@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styles from './signUp.module.css';
 import { useAppDispatch, signUpUser, useSignUpMutation } from '../../store';
 import CloseIcon from '@mui/icons-material/Close';
-import { Dialog } from '@mui/material';
+import { Dialog, IconButton, Tooltip } from '@mui/material';
 import { User } from '../../types/user.types';
 interface SignUpProps {
   setIsOpenSignUpModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -34,18 +34,6 @@ export const SignUpMenu: React.FC<SignUpProps> = ({
       isAdmin: isAdmin,
     })
       .unwrap()
-      .then((result: User) => {
-        dispatch(
-          signUpUser({
-            id: result.id,
-            username: result.username,
-            firstName: result.firstName,
-            lastName: result.lastName,
-            password: result.password,
-            isAdmin: result.isAdmin,
-          })
-        );
-      })
       .catch((error) => {
         if (error.data.message) {
           setSignUpError(error.data.message[0]);
@@ -67,38 +55,50 @@ export const SignUpMenu: React.FC<SignUpProps> = ({
           className={styles.exitButton}
           onClick={() => setIsOpenSignUpModal(false)}
         >
-          <CloseIcon />
+          <Tooltip title="Exit">
+            <IconButton className={styles.iconButton}>
+              <CloseIcon />
+            </IconButton>
+          </Tooltip>
         </button>
-        <div className={styles.signupTitle}> Sign Up </div>
+        <div className={styles.signupTitle}> הרשם </div>
         <div className={styles.signupForm}>
           <div className={styles.form}>
             <div className={styles.titleAndBox}>
-              <label htmlFor="">Username</label>
+              <label htmlFor="username">שם משתמש</label>
               <input
+                id="username"
+                name="username"
                 className={styles.inputBox}
                 onChange={(e) => setUsername(e.target.value)}
               />
             </div>
 
             <div className={styles.titleAndBox}>
-              <label htmlFor="">First Name</label>
+              <label htmlFor="firstname">שם פרטי</label>
               <input
+                id="firstname"
+                name="firstname"
                 className={styles.inputBox}
                 onChange={(e) => setFirstName(e.target.value)}
               />
             </div>
 
             <div className={styles.titleAndBox}>
-              <label htmlFor="">Last Name</label>
+              <label htmlFor="lastname">שם משפחה</label>
               <input
+                id="lastname"
+                name="lastname"
                 className={styles.inputBox}
                 onChange={(e) => setLastName(e.target.value)}
               />
             </div>
 
             <div className={styles.titleAndBox}>
-              <label htmlFor="">Password</label>
+              <label htmlFor="password">סיסמה</label>
               <input
+                id="password"
+                name="password"
                 className={styles.inputBox}
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -111,7 +111,7 @@ export const SignUpMenu: React.FC<SignUpProps> = ({
                 handleSignUp();
               }}
             >
-              Add
+              הרשם
             </button>
             <div className={styles.errorBox}>
               <div className={styles.error}>{signUpError}</div>
