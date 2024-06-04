@@ -59,7 +59,7 @@ export const ToastEdit: React.FC<ToastEditProps> = ({
   return (
     <Dialog open={isOpen} onClose={() => setIsOpen(false)} maxWidth={false}>
       <div className={styles.editToastMenu}>
-        <div className={styles.editToastTitle}>Edit Toast</div>
+        <div className={styles.editToastTitle}>עריכת שתיה</div>
         <div className={styles.editToastForm}>
           <div className={styles.form}>
             <div className={styles.titleAndBox}>
