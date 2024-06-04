@@ -35,13 +35,6 @@ export const ToastsCard = () => {
                 />
               ))
             )}
-            <Toast date="" toastId="" hasHappened={false} />
-            <Toast date="" toastId="" hasHappened={false} />
-            <Toast date="" toastId="" hasHappened={false} />
-            <Toast date="" toastId="" hasHappened={false} />
-            <Toast date="" toastId="" hasHappened={false} />
-            <Toast date="" toastId="" hasHappened={false} />
-            <Toast date="" toastId="" hasHappened={false} />
           </div>
         </div>
         <div className={styles.mainSection}>
@@ -72,13 +65,6 @@ export const ToastsCard = () => {
                 />
               ))
             )}
-            <Toast date="" toastId="" hasHappened={false} />
-            <Toast date="" toastId="" hasHappened={false} />
-            <Toast date="" toastId="" hasHappened={false} />
-            <Toast date="" toastId="" hasHappened={false} />
-            <Toast date="" toastId="" hasHappened={false} />
-            <Toast date="" toastId="" hasHappened={false} />
-            <Toast date="" toastId="" hasHappened={false} />
           </div>
         </div>
       </div>

@@ -105,44 +105,52 @@ export const SettingsMenu: React.FC<SettingsMenuProps> = ({
                   <div className={styles.form}>
                     <div className={styles.titleAndBox}>
                       <input
+                        id="username"
+                        name="username"
                         className={styles.inputBox}
                         defaultValue={loggedInUser.data?.username}
                         onChange={(e) => setUsername(e.target.value)}
                       />
-                      <label className={styles.labelForm} htmlFor="">
+                      <label className={styles.labelForm} htmlFor="username">
                         שם משתמש
                       </label>
                     </div>
 
                     <div className={styles.titleAndBox}>
                       <input
+                        id="firstname"
+                        name="firstname"
                         className={styles.inputBox}
                         defaultValue={loggedInUser.data?.firstName}
                         onChange={(e) => setFirstName(e.target.value)}
                       />
-                      <label className={styles.labelForm} htmlFor="">
+                      <label className={styles.labelForm} htmlFor="firstname">
                         שם פרטי
                       </label>
                     </div>
 
                     <div className={styles.titleAndBox}>
                       <input
+                        id="lastname"
+                        name="lastname"
                         className={styles.inputBox}
                         defaultValue={loggedInUser.data?.lastName}
                         onChange={(e) => setLastName(e.target.value)}
                       />
-                      <label className={styles.labelForm} htmlFor="">
+                      <label className={styles.labelForm} htmlFor="lastname">
                         שם משפחה
                       </label>
                     </div>
 
                     <div className={styles.titleAndBox}>
                       <input
+                        id="password"
+                        name="password"
                         className={styles.inputBox}
                         defaultValue={loggedInUser.data?.password}
                         onChange={(e) => setPassword(e.target.value)}
                       />
-                      <label className={styles.labelForm} htmlFor="">
+                      <label className={styles.labelForm} htmlFor="password">
                         סיסמה
                       </label>
                     </div>

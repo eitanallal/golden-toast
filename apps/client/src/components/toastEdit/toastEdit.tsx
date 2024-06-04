@@ -63,10 +63,12 @@ export const ToastEdit: React.FC<ToastEditProps> = ({
         <div className={styles.editToastForm}>
           <div className={styles.form}>
             <div className={styles.titleAndBox}>
-              <label className={styles.labelForm} htmlFor="">
+              <label className={styles.labelForm} htmlFor="date">
                 תאריך
               </label>
               <input
+                id="date"
+                name="date"
                 type="date"
                 defaultValue={date}
                 className={styles.inputBox}
@@ -75,10 +77,12 @@ export const ToastEdit: React.FC<ToastEditProps> = ({
             </div>
 
             <div className={styles.titleAndBox}>
-              <label className={styles.labelForm} htmlFor="">
+              <label className={styles.labelForm} htmlFor="hasHappened">
                 קרה
               </label>
               <Switch
+                id="hasHappened"
+                name="hasHappened"
                 checked={isChecked}
                 onChange={(event) => setIsChecked(event.target.checked)}
               />

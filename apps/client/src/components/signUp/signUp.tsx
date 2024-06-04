@@ -65,46 +65,54 @@ export const SignUpMenu: React.FC<SignUpProps> = ({
         <div className={styles.signupForm}>
           <div className={styles.form}>
             <div className={styles.titleAndBox}>
-              <label htmlFor="">שם משתמש</label>
+              <label htmlFor="username">שם משתמש</label>
               <input
+                id="username"
+                name="username"
                 className={styles.inputBox}
                 onChange={(e) => setUsername(e.target.value)}
               />
             </div>
 
             <div className={styles.titleAndBox}>
-              <label htmlFor="">שם פרטי</label>
+              <label htmlFor="firstname">שם פרטי</label>
               <input
+                id="firstname"
+                name="firstname"
                 className={styles.inputBox}
                 onChange={(e) => setFirstName(e.target.value)}
               />
             </div>
 
             <div className={styles.titleAndBox}>
-              <label htmlFor="">שם משפחה</label>
+              <label htmlFor="lastname">שם משפחה</label>
               <input
+                id="lastname"
+                name="lastname"
                 className={styles.inputBox}
                 onChange={(e) => setLastName(e.target.value)}
               />
             </div>
 
             <div className={styles.titleAndBox}>
-              <label htmlFor="">סיסמה</label>
+              <label htmlFor="password">סיסמה</label>
               <input
+                id="password"
+                name="password"
                 className={styles.inputBox}
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
           </div>
           <div className={styles.validationButtonContainer}>
-            <div
+            <button
               className={styles.validationButton}
               onClick={() => {
                 handleSignUp();
               }}
             >
               הרשם
-            </div>
+            </button>
             <div className={styles.errorBox}>
               <div className={styles.error}>{signUpError}</div>
             </div>

@@ -39,7 +39,6 @@ export const AddToast: React.FC<AddToastProps> = ({
     })
       .unwrap()
       .then((result) => {
-        console.log('added toast successfully');
         toast.success(`Toast added successfully: ${result}`, {
           className: 'styles.toastifyWindow',
         });
@@ -58,7 +57,7 @@ export const AddToast: React.FC<AddToastProps> = ({
         <div className={styles.addToastForm}>
           <div className={styles.form}>
             <div className={styles.titleAndBox}>
-              <label htmlFor="">שם משתמש</label>
+              <label htmlFor="user">שם משתמש</label>
               {!loginResult.data ? (
                 <div className={styles.inputBox}>
                   Need to login in order to add toasts
@@ -93,8 +92,10 @@ export const AddToast: React.FC<AddToastProps> = ({
                 </select>
               )}
 
-              <label htmlFor="">תאריך</label>
+              <label htmlFor="date">תאריך</label>
               <input
+                id="date"
+                name="date"
                 type="date"
                 min={new Date().toISOString().split('T')[0]}
                 className={styles.inputBox}
@@ -103,14 +104,14 @@ export const AddToast: React.FC<AddToastProps> = ({
             </div>
           </div>
           <div className={styles.validationButtonContainer}>
-            <div
+            <button
               className={styles.validationButton}
               onClick={() => {
                 handleAddToast();
               }}
             >
               להוסיף
-            </div>
+            </button>
           </div>
         </div>
       </div>

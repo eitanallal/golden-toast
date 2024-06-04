@@ -31,12 +31,12 @@ export const App = () => {
         <div className={styles.appTitle}>שתיית הזהב</div>
 
         {!result.data ? (
-          <div
+          <button
             className={styles.signupLoginButton}
             onClick={() => setIsOpenLoginModal(true)}
           >
             הרשם התחבר
-          </div>
+          </button>
         ) : (
           <div className={styles.helloBox}>
             <p>
