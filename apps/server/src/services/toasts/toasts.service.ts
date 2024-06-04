@@ -160,9 +160,7 @@ export class ToastsService {
 
   async getBestScore(): Promise<number> {
     const recordSemester1 = await this.getBestScoreSemester(Op.lte);
-    console.log('Best Score 1:', recordSemester1);
     const recordSemester2 = await this.getBestScoreSemester(Op.gt);
-    console.log('Best Score 2:', recordSemester2);
     return Math.max(recordSemester1, recordSemester2);
   }
 

@@ -53,7 +53,6 @@ export const CriminalsStatus: React.FC = () => {
           </tr>
         ) : (
           users.map((user, index) => (
-            // <tbody>
             <tr key={index}>
               <td style={{ textAlign: 'center' }}>{user.username}</td>
               <td style={{ textAlign: 'center', alignContent: 'center' }}>

@@ -49,9 +49,7 @@ export const ToastEdit: React.FC<ToastEditProps> = ({
       hasHappened: isChecked,
     }).unwrap();
     if (!isChecked) {
-      console.log('Here I am');
       trigger(userId);
-      console.log(userResult.data);
       if (!userResult.data)
         addCriminal({ userId: userId, isPersonNonGrata: false });
     }
