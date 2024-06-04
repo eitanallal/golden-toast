@@ -151,13 +151,18 @@ export class ToastsService {
       group: [Sequelize.fn('DATE_PART', 'year', Sequelize.col('date'))],
       order: [['Total_Count', 'DESC']],
     });
+    if (list.length === 0) {
+      return 0;
+    }
     const recordSemester = list[0].dataValues['Total_Count'];
     return recordSemester;
   }
 
   async getBestScore(): Promise<number> {
     const recordSemester1 = await this.getBestScoreSemester(Op.lte);
+    console.log('Best Score 1:', recordSemester1);
     const recordSemester2 = await this.getBestScoreSemester(Op.gt);
+    console.log('Best Score 2:', recordSemester2);
     return Math.max(recordSemester1, recordSemester2);
   }
 

@@ -14,6 +14,11 @@ const extendedApi = serverApi.injectEndpoints({
       providesTags: ['Criminals'],
     }),
 
+    getUserStatus: builder.query<number, string>({
+      query: (id: string) => `criminals/${id}`,
+      providesTags: ['Criminals'],
+    }),
+
     addCriminal: builder.mutation<
       CriminalType,
       { userId: string; isPersonNonGrata: boolean }
@@ -60,4 +65,5 @@ export const {
   useAddCriminalMutation,
   useDeleteCriminalMutation,
   useEditCriminalMutation,
+  useLazyGetUserStatusQuery,
 } = extendedApi;

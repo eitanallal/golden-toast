@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import styles from './addToast.module.css';
 import { Dialog } from '@mui/material';
-import { useGetUsersQuery, useAddMutation } from '../../store';
+import {
+  useGetUsersQuery,
+  useAddMutation,
+  useLoginMutation,
+} from '../../store';
 import { User } from '../../types/user.types';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
@@ -18,12 +22,16 @@ export const AddToast: React.FC<AddToastProps> = ({
   const [user, setUser] = useState('');
   const [date, setDate] = useState('');
 
-  const [addToast, result] = useAddMutation({
-    // fixedCacheKey: 'add-toast-result',
+  const [addToast, result] = useAddMutation({});
+  const { data: users } = useGetUsersQuery();
+  const [login, loginResult] = useLoginMutation({
+    fixedCacheKey: 'login-key',
   });
 
-  const { data: users } = useGetUsersQuery();
   const handleAddToast = async () => {
+    if (!loginResult.data?.isAdmin && loginResult.data?.id) {
+      setUser(loginResult.data?.id);
+    }
     addToast({
       date: date,
       userId: user,
@@ -51,24 +59,41 @@ export const AddToast: React.FC<AddToastProps> = ({
           <div className={styles.form}>
             <div className={styles.titleAndBox}>
               <label htmlFor="">שם משתמש</label>
-              <select
-                className={styles.inputBox}
-                name="user"
-                id="user"
-                onChange={(e) => setUser(e.target.value)}
-              >
-                {!users || users.length === 0 ? (
-                  <p> No user found</p>
-                ) : (
-                  users.map((user: User, index: number) => (
-                    <option key={index} value={user.id}>
-                      {user.username}
-                    </option>
-                  ))
-                )}
-              </select>
+              {!loginResult.data ? (
+                <div className={styles.inputBox}>
+                  Need to login in order to add toasts
+                </div>
+              ) : !loginResult.data.isAdmin ? (
+                <select
+                  className={styles.inputBox}
+                  name="user"
+                  id="user"
+                  onChange={(e) => setUser(e.target.value)}
+                >
+                  <option value={loginResult.data.id}>
+                    {loginResult.data.username}
+                  </option>
+                </select>
+              ) : (
+                <select
+                  className={styles.inputBox}
+                  name="user"
+                  id="user"
+                  onChange={(e) => setUser(e.target.value)}
+                >
+                  {!users || users.length === 0 ? (
+                    <p> No user found</p>
+                  ) : (
+                    users.map((user: User, index: number) => (
+                      <option key={index} value={user.id}>
+                        {user.username}
+                      </option>
+                    ))
+                  )}
+                </select>
+              )}
 
-              <label htmlFor="">תעריך</label>
+              <label htmlFor="">תאריך</label>
               <input
                 type="date"
                 min={new Date().toISOString().split('T')[0]}

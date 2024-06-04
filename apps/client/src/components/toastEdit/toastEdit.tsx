@@ -1,15 +1,18 @@
-import { Dialog, Switch } from '@mui/material';
+import { Dialog, IconButton, Switch } from '@mui/material';
 import styles from './toastEdit.module.css';
-import {
-  useDeleteMutation,
-  useEditToastMutation,
-} from '../../store/services/toasts.api';
 import { useEffect, useState } from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
+import {
+  useDeleteMutation,
+  useAddCriminalMutation,
+  useEditToastMutation,
+  useLazyGetUserStatusQuery,
+} from '../../store';
 
 type ToastEditProps = {
   date: string;
   toastId: string;
+  userId: string;
   hasHappened: boolean;
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -17,15 +20,19 @@ type ToastEditProps = {
 
 export const ToastEdit: React.FC<ToastEditProps> = ({
   date,
+  userId,
   toastId,
   hasHappened,
   isOpen,
   setIsOpen,
 }) => {
+  const [addCriminal, resultAddCriminal] = useAddCriminalMutation();
   const [editToast, result] = useEditToastMutation({
     fixedCacheKey: 'edit-toast-mutation',
   });
   const [deleteToast, resultDeletion] = useDeleteMutation();
+  const [trigger, userResult] = useLazyGetUserStatusQuery();
+
   const [isChecked, setIsChecked] = useState<boolean>(hasHappened);
   useEffect(() => {
     setIsChecked(hasHappened);
@@ -41,6 +48,13 @@ export const ToastEdit: React.FC<ToastEditProps> = ({
       date: date,
       hasHappened: isChecked,
     }).unwrap();
+    if (!isChecked) {
+      console.log('Here I am');
+      trigger(userId);
+      console.log(userResult.data);
+      if (!userResult.data)
+        addCriminal({ userId: userId, isPersonNonGrata: false });
+    }
     setIsOpen(false);
   };
 
@@ -52,7 +66,7 @@ export const ToastEdit: React.FC<ToastEditProps> = ({
           <div className={styles.form}>
             <div className={styles.titleAndBox}>
               <label className={styles.labelForm} htmlFor="">
-                New date
+                תאריך
               </label>
               <input
                 type="date"
@@ -64,7 +78,7 @@ export const ToastEdit: React.FC<ToastEditProps> = ({
 
             <div className={styles.titleAndBox}>
               <label className={styles.labelForm} htmlFor="">
-                Happened
+                קרה
               </label>
               <Switch
                 checked={isChecked}
@@ -82,12 +96,15 @@ export const ToastEdit: React.FC<ToastEditProps> = ({
               שלח
             </div>
 
-            <DeleteIcon
+            <IconButton
+              className={styles.iconButton}
               sx={{ fontSize: '2rem', color: 'red', alignSelf: 'right' }}
               onClick={() => {
                 handleDelete();
               }}
-            />
+            >
+              <DeleteIcon />
+            </IconButton>
           </div>
         </div>
       </div>

@@ -62,3 +62,7 @@
   width: 100%;
   direction: rtl;
 }
+
+.iconButton:hover {
+  background-color: rgba(0, 0, 0, 0.2) !important;
+}

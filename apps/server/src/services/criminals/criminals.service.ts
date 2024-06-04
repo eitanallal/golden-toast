@@ -54,7 +54,7 @@ export class CriminalsService {
   }
 
   async getByUser(id: string) {
-    const userData = await this.criminalModel.findAll({
+    const userData = await this.criminalModel.count({
       where: { userId: id },
     });
     return userData;

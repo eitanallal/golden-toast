@@ -28,20 +28,20 @@ export const ToastsCard = () => {
               futureToastsList.map((item, index) => (
                 <Toast
                   key={index}
-                  username={item.user.firstName + ' ' + item.user.lastName}
+                  user={item.user}
                   date={item.date.split('T')[0]}
                   toastId={item.id}
                   hasHappened={item.hasHappened}
                 />
               ))
             )}
-            <Toast username="" date="" toastId="" hasHappened={false} />
-            <Toast username="" date="" toastId="" hasHappened={false} />
-            <Toast username="" date="" toastId="" hasHappened={false} />
-            <Toast username="" date="" toastId="" hasHappened={false} />
-            <Toast username="" date="" toastId="" hasHappened={false} />
-            <Toast username="" date="" toastId="" hasHappened={false} />
-            <Toast username="" date="" toastId="" hasHappened={false} />
+            <Toast date="" toastId="" hasHappened={false} />
+            <Toast date="" toastId="" hasHappened={false} />
+            <Toast date="" toastId="" hasHappened={false} />
+            <Toast date="" toastId="" hasHappened={false} />
+            <Toast date="" toastId="" hasHappened={false} />
+            <Toast date="" toastId="" hasHappened={false} />
+            <Toast date="" toastId="" hasHappened={false} />
           </div>
         </div>
         <div className={styles.mainSection}>
@@ -55,7 +55,7 @@ export const ToastsCard = () => {
               passedToastsUserList?.map((item, index) => (
                 <Toast
                   key={index}
-                  username={item.user.firstName + ' ' + item.user.lastName}
+                  user={item.user}
                   date={item.date.split('T')[0]}
                   toastId={item.id}
                   hasHappened={item.hasHappened}
@@ -65,20 +65,20 @@ export const ToastsCard = () => {
               passedToastsList.map((item, index) => (
                 <Toast
                   key={index}
-                  username={item.user.firstName + ' ' + item.user.lastName}
+                  user={item.user}
                   date={item.date.split('T')[0]}
                   toastId={item.id}
                   hasHappened={item.hasHappened}
                 />
               ))
             )}
-            <Toast username="" date="" toastId="" hasHappened={false} />
-            <Toast username="" date="" toastId="" hasHappened={false} />
-            <Toast username="" date="" toastId="" hasHappened={false} />
-            <Toast username="" date="" toastId="" hasHappened={false} />
-            <Toast username="" date="" toastId="" hasHappened={false} />
-            <Toast username="" date="" toastId="" hasHappened={false} />
-            <Toast username="" date="" toastId="" hasHappened={false} />
+            <Toast date="" toastId="" hasHappened={false} />
+            <Toast date="" toastId="" hasHappened={false} />
+            <Toast date="" toastId="" hasHappened={false} />
+            <Toast date="" toastId="" hasHappened={false} />
+            <Toast date="" toastId="" hasHappened={false} />
+            <Toast date="" toastId="" hasHappened={false} />
+            <Toast date="" toastId="" hasHappened={false} />
           </div>
         </div>
       </div>
